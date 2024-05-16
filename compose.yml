@@ -1,0 +1,114 @@
+version: '3'
+# Docker Composeのバージョンを3に設定
+
+services:
+# サービスの定義を開始
+
+  db:
+  # データベースサービスの定義
+
+    image: postgres
+    # 使用するDockerイメージはPostgreSQL
+
+    restart: always
+    # コンテナが停止した場合に常に再起動する設定
+
+    environment:
+    # 環境変数の設定
+
+      TZ: Asia/Tokyo
+      # タイムゾーンをAsia/Tokyoに設定
+
+      POSTGRES_PASSWORD: password
+      # PostgreSQLのパスワードを設定
+
+    volumes:
+    # ボリュームのマウント設定
+
+      - postgresql_data:/var/lib/postgresql
+      # postgresql_dataボリュームを/var/lib/postgresqlにマウント
+
+    ports:
+    # ポートのマッピング設定
+
+      - 5432:5432
+      # ホストの5432ポートをコンテナの5432ポートにマッピング
+
+    healthcheck:
+    # ヘルスチェックの設定
+
+      test: ["CMD-SHELL", "pg_isready -d myapp_development -U postgres"]
+      # pg_isreadyコマンドでデータベースの準備ができているかを確認
+
+      interval: 10s
+      # ヘルスチェックの間隔を10秒に設定
+
+      timeout: 5s
+      # ヘルスチェックのタイムアウトを5秒に設定
+
+      retries: 5
+      # ヘルスチェックのリトライ回数を5回に設定
+
+  web:
+  # ウェブサービスの定義
+
+    build:
+    # ビルド設定
+
+      context: .
+      # ビルドコンテキストを現在のディレクトリに設定
+
+      dockerfile: Dockerfile.dev
+      # 使用するDockerfileをDockerfile.devに設定
+
+    command: bash -c "bundle install && bundle exec rails db:prepare && rm -f tmp/pids/server.pid && ./bin/dev"
+    # コンテナ起動時に実行するコマンドを設定
+
+    tty: true
+    # TTYを有効にする設定
+
+    stdin_open: true
+    # 標準入力を開いたままにする設定
+
+    volumes:
+    # ボリュームのマウント設定
+
+      - .:/myapp
+      # 現在のディレクトリをコンテナの/myappにマウント
+
+      - bundle_data:/usr/local/bundle:cached
+      # bundle_dataボリュームを/usr/local/bundleにキャッシュ付きでマウント
+
+      - node_modules:/app/node_modules
+      # node_modulesボリュームを/app/node_modulesにマウント
+
+    environment:
+    # 環境変数の設定
+
+      TZ: Asia/Tokyo
+      # タイムゾーンをAsia/Tokyoに設定
+
+    ports:
+    # ポートのマッピング設定
+
+      - "3000:3000"
+      # ホストの3000ポートをコンテナの3000ポートにマッピング
+
+    depends_on:
+    # 依存関係の設定
+
+      db:
+        condition: service_healthy
+        # dbサービスがヘルシーであることを条件とする
+
+volumes:
+# ボリュームの定義
+
+  bundle_data:
+  # bundle_dataボリュームの定義
+
+  postgresql_data:
+  # postgresql_dataボリュームの定義
+
+  node_modules:
+  # node_modulesボリュームの定義
