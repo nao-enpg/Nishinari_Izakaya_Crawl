@@ -91,8 +91,8 @@ erDiagram
   izakayas ||--o{ favorites : "1つの居酒屋は0以上のお気に入りを持つ"
   izakayas ||--o{ izakaya_tags : ""
   tags ||--o{ izakaya_tags : "1つのタグは0以上の居酒屋を持つ"
-  plans ||--|{ izakaya_plans : "1つのプランは複数の居酒屋を持つ"
-  izakayas ||--o{ izakaya_plans : "1つの居酒屋は0以上のプランを持つ"
+  plans ||--|{ izakaya_plans : "1つの旅程表は複数の居酒屋を持つ"
+  izakayas ||--o{ izakaya_plans : "1つの居酒屋は0以上の旅程表を持つ"
 
   users {
     bigint id PK
@@ -133,7 +133,7 @@ erDiagram
   plans {
     bigint id PK
     references user FK
-    string name "プラン名"
+    string name "旅程表名"
     boolean public
     timestamp created_at
     timestamp updated_at
