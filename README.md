@@ -72,3 +72,6 @@
 - 認証: Google OAuth
 - インフラ: Docker (v20.10.8), Koyeb
 - API: Google Maps API
+
+## 画面遷移図
+　[こちらをご確認ください（Figmaリンク）](https://www.figma.com/design/7HnO9Pu5IqJVVStRWN1Ehm/Nishinari-Izakaya-Crawl?m=dev&node-id=0%3A1&t=D6XPauzNMDk5uAM0-1)
