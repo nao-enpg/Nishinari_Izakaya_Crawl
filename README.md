@@ -6,7 +6,7 @@
 
 ## このサービスへの思い・作りたい理由
 
-サービス名にある「西成」は、大阪市西成区の「新今宮エリア」を指しています。（参考: [大阪市西成区役所「新今宮ワンダーランド」Webサイト](https://shin-imamiya-osaka.com/)）
+サービス名にある「西成」は、大阪市西成区の「新今宮エリア」を指しています。（参考: [大阪市西成区役所「新今宮ワンダーランド」Web サイト](https://shin-imamiya-osaka.com/)）
 
 私はこのエリアで 8 年前から飲み歩きを始め、100 店舗以上の居酒屋を巡ってきました。
 
@@ -48,7 +48,9 @@
 さらに、外国人観光客の利用を想定し、言語切り替え機能（英語）を実装します。
 
 ## 機能候補
+
 ### MVP リリース時
+
 - ユーザー機能（Google アカウントによる認証）
 - マップ検索（Google Maps API）
 - タグ検索
@@ -58,14 +60,16 @@
 - 旅程表作成
 
 ### 本リリース時
+
 - レスポンシブ対応
 - 英語への切り替え対応
 - 現在地からのレコメンド
 - 現在地から次のお店までのルート検索
-- YouTube動画レコメンド（店舗名で動画を検索）
+- YouTube 動画レコメンド（店舗名で動画を検索）
 - 旅程表の共同編集
 
 ## 機能の実装方針予定
+
 - フロントエンド: Tailwind CSS (v3.4.3), DaisyUI (v4.11.1), Hotwire
 - バックエンド: Ruby (v3.2.3), Ruby on Rails (v7.0.4)
 - データベース: PostgreSQL (v16.2)
@@ -74,4 +78,79 @@
 - API: Google Maps API
 
 ## 画面遷移図
-　[こちらをご確認ください（Figmaリンク）](https://www.figma.com/design/7HnO9Pu5IqJVVStRWN1Ehm/Nishinari-Izakaya-Crawl?m=dev&node-id=0%3A1&t=D6XPauzNMDk5uAM0-1)
+
+[こちらをご確認ください（Figma リンク）](https://www.figma.com/design/7HnO9Pu5IqJVVStRWN1Ehm/Nishinari-Izakaya-Crawl?m=dev&node-id=0%3A1&t=D6XPauzNMDk5uAM0-1)
+
+## ER 図
+
+```mermaid
+erDiagram
+  users ||--o{ favorites : "1人のユーザーは0以上のお気に入りを持つ"
+  users ||--o{ plans : "1人のユーザーは0以上の旅程表を持つ"
+  izakayas ||--o{ favorites : "1つの居酒屋は0以上のお気に入りを持つ"
+  izakayas ||--o{ izakaya_tags : "1つの居酒屋は0以上のタグを持つ"
+  tags ||--o{ izakaya_tags : "1つのタグは0以上の居酒屋を持つ"
+  plans ||--|{ izakaya_plans : "1つの旅程表は複数の居酒屋を持つ"
+  izakayas ||--o{ izakaya_plans : "1つの居酒屋は0以上の旅程表を持つ"
+
+  users {
+    bigint id PK
+    string uid "UID"
+    string name "ユーザー名"
+    string avatar "アバター"
+    timestamp created_at
+    timestamp updated_at
+  }
+
+  izakayas {
+    bigint id PK
+    string name "居酒屋名"
+    float latitude "緯度"
+    float longitude "経度"
+    string image "画像"
+    string opening_hours "営業時間"
+    string description "説明"
+    timestamp created_at
+    timestamp updated_at
+  }
+
+  tags {
+    bigint id PK
+    string name "タグ名"
+    timestamp created_at
+    timestamp updated_at
+  }
+
+  favorites {
+    bigint id PK
+    references user FK
+    references izakaya FK
+    timestamp created_at
+    timestamp updated_at
+  }
+
+  plans {
+    bigint id PK
+    references user FK
+    string name "旅程表名"
+    boolean public
+    timestamp created_at
+    timestamp updated_at
+  }
+
+  izakaya_tags {
+    bigint id PK
+    references izakaya FK
+    references tag FK
+    timestamp created_at
+    timestamp updated_at
+  }
+
+  izakaya_plans {
+    bigint id PK
+    references plan FK
+    references izakaya FK
+    timestamp created_at
+    timestamp updated_at
+  }
+```
