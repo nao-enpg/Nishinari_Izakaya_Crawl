@@ -85,11 +85,10 @@
 
 ```mermaid
 erDiagram
-  users ||--o{ izakayas : "1人のユーザーは0以上の居酒屋を持つ"
   users ||--o{ favorites : "1人のユーザーは0以上のお気に入りを持つ"
   users ||--o{ plans : "1人のユーザーは0以上の旅程表を持つ"
   izakayas ||--o{ favorites : "1つの居酒屋は0以上のお気に入りを持つ"
-  izakayas ||--o{ izakaya_tags : ""
+  izakayas ||--o{ izakaya_tags : "1つの居酒屋は0以上のタグを持つ"
   tags ||--o{ izakaya_tags : "1つのタグは0以上の居酒屋を持つ"
   plans ||--|{ izakaya_plans : "1つの旅程表は複数の居酒屋を持つ"
   izakayas ||--o{ izakaya_plans : "1つの居酒屋は0以上の旅程表を持つ"
