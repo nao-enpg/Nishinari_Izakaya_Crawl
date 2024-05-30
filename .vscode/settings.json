@@ -1,0 +1,12 @@
+{
+    "rubyLsp.rubyVersionManager": {
+        "manager": "rbenv",
+        "identifier": "auto"
+    },
+    "rubyLsp.formatter": "rubocop",
+    "[ruby]": {
+        "editor.defaultFormatter": "Shopify.ruby-lsp",
+        "editor.formatOnSave": true
+    }
+}
+

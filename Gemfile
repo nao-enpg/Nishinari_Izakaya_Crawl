@@ -50,6 +50,19 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri windows ]
+
+  gem 'rubocop'
+  gem 'rubocop-checkstyle_formatter'
+  gem 'rubocop-rails'
+
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'byebug'
+  gem 'pry'
+  gem 'pry-byebug'
+  gem 'pry-doc'
+  gem 'pry-rails'
+
 end
 
 group :development do
@@ -70,7 +83,4 @@ group :test do
 end
 
 gem 'dotenv-rails'
-gem 'google-api-client'
-gem 'rack-cors'
-gem 'jwt'
 gem 'google_places'
