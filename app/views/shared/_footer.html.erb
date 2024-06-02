@@ -1,0 +1,16 @@
+<%# TailwindCSSを利用して、問い合わせページ・利用規約・プライバシーポリシーへのリンク %>
+<footer class="fixed bottom-0 left-0 w-full bg-gray-800 text-white">
+  <div class="flex items-center justify-between h-16">
+    <nav class="lg:flex items-center">
+      <% footer_links = [
+        { path: '/contact', text: 'お問い合わせ' },
+        { path: '/terms', text: '利用規約' },
+        { path: '/privacy', text: 'プライバシーポリシー' }
+      ] %>
+      <% footer_links.each do |link| %>
+        <a href="<%= link[:path] %>" class="text-white text-sm font-bold ml-4"><%= link[:text] %></a>
+      <% end %>
+    </nav>
+    <span class="text-white text-sm font-bold mr-4">© 西成泥酔旅行</span>
+  </div>
+</footer>
