@@ -1,0 +1,11 @@
+<%# TailwindCSSを使用してヘッダーにハンバーガーメニュー %>
+<header class="bg-gray-800 fixed top-0 left-0 w-full z-10">
+  <div class="flex items-center justify-between h-16">
+    <div class="flex items-center">
+      <a href="/" class="text-white text-2xl font-bold ml-4">西成泥酔旅行</a>
+    </div>
+    <div class="block">
+      <%= link_to 'Login with Google', auth_at_provider_path(provider: :google) %>
+    </div>
+  </div>
+</header>
