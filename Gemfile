@@ -85,3 +85,4 @@ end
 gem 'dotenv-rails'
 gem 'google_places'
 gem 'sorcery', '~> 0.17.0'
+gem 'config'
