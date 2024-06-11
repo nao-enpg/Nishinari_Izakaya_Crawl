@@ -1,0 +1,2 @@
+class Izakaya < ApplicationRecord
+end
