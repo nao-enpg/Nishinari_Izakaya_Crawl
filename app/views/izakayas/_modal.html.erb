@@ -1,0 +1,6 @@
+<dialog data-modal-target="dialog" class="modal-box">
+  <h2 class="card-title"><%= @izakaya.name %></h2>
+  <img src="<%= @izakaya.image %>" alt="<%= @izakaya.name %>">
+  <p><%= @izakaya.formatted_address %></p>
+  <button class="btn btn-primary" data-action="modal#close">Close</button>
+</dialog>
