@@ -1,0 +1,10 @@
+<%= turbo_frame_tag "modal_frame" do %>
+  <dialog data-modal-target="dialog" class="modal modal-open bg-black p-6 rounded-lg shadow-lg">
+    <div class="bg-white p-6 rounded-lg">
+      <h2 class="card-title text-lg font-bold mb-4"><%= @izakaya.name %></h2>
+      <img src="<%= @izakaya.image %>" alt="<%= @izakaya.name %>" class="w-full h-auto rounded-md mb-4">
+      <p class="text-sm mb-4"><%= @izakaya.formatted_address %></p>
+      <button class="btn btn-primary w-full" data-action="modal#close">Close</button>
+    </div>
+  </dialog>
+<% end %>

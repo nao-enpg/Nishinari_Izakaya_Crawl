@@ -4,4 +4,12 @@ class IzakayasController < ApplicationController
   def index
     @izakayas = Izakaya.order(id: :asc).all
   end
+
+  def show
+    @izakaya = Izakaya.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
+  end
 end

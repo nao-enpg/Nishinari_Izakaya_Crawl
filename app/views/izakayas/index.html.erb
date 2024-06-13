@@ -3,12 +3,18 @@
     <% @izakayas.each do |izakaya| %>
       <div class="card shadow-lg compact bg-base-100">
         <div class="card-body">
-          <h2 class="card-title"><%= izakaya.name %></h2>
-          <img src="<%= izakaya.image %>" alt="<%= izakaya.name %>">
+          <h2 class="card-title">
+            <%= link_to izakaya.name, izakaya_path(izakaya), data: { turbo_frame: "modal_frame", action: "click->modal#open" } %>
+          </h2>
+          <%= link_to izakaya_path(izakaya), data: { turbo_frame: "modal_frame", action: "click->modal#openmodal#open" } do %>
+            <img src="<%= izakaya.image %>" alt="<%= izakaya.name %>">
+          <% end %>
           <p><%= izakaya.formatted_address %></p>
-          # ここにタグを表示
         </div>
       </div>
     <% end %>
   </div>
 </div>
+
+<turbo-frame id="modal_frame" data-controller="modal">
+</turbo-frame>
