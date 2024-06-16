@@ -1,25 +1,55 @@
 <div class="container mx-auto p-4">
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-    <% @izakayas.each do |izakaya| %>
-      <div class="card shadow-lg compact bg-base-100">
-        <div class="card-body">
-          <h2 class="card-title">
-            <%= link_to izakaya.name, izakaya_path(izakaya), data: { turbo_frame: "modal_frame", action: "click->modal#open" } %>
-          </h2>
-          <%= link_to izakaya_path(izakaya), data: { turbo_frame: "modal_frame", action: "click->modal#openmodal#open" } do %>
-            <img src="<%= izakaya.image %>" alt="<%= izakaya.name %>">
-          <% end %>
-          <p>
-            <% izakaya.tags.sort_by(&:id).each do |tag| %>
-              <span class="inline-block bg-blue-500 text-white text-xs px-3 py-1 rounded-full">
-                <%= tag.name %>
-              </span>
-            <% end %>
-          </p>
-        </div>
+  <%= search_form_for @q, url: izakayas_path, method: :get, class: "mb-4" do |f| %>
+    <div class="flex flex-wrap items-center">
+      <div class="w-full md:w-1/2 mb-4 md:mb-0">
+        <%= f.label :name_cont, "店名で検索" %>
+        <%= f.text_field :name_cont, class: "input input-bordered w-full" %>
       </div>
-    <% end %>
-  </div>
+      <div class="w-full md:w-1/2 mb-4 md:mb-0 md:ml-4 flex flex-col md:flex-row items-center">
+        <%= f.submit "検索", class: "btn btn-primary w-full md:w-auto mb-2 md:mb-0 md:mr-2" %>
+        <%= link_to '検索解除', izakayas_path, class: 'btn btn-secondary w-full md:w-auto' %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="flex flex-wrap gap-2">
+  <% @tags.each do |tag| %>
+    <span class="inline-block bg-blue-500 text-white text-xs px-3 py-1 rounded-full">
+      <%= link_to tag.name, izakayas_path(q: { tags_id_in: [*params.dig(:q, :tags_id_in), tag.id].uniq }), data: { turbo_frame: "izakayas_frame" } %>
+    </span>
+  <% end %>
+</div>
+
+<div class="mt-4">
+  <span class="inline-block bg-red-500 text-white text-xs px-3 py-1 rounded-full">
+    <%= link_to "絞り込み解除", izakayas_path, data: { turbo_frame: "izakayas_frame" } %>
+  </span>
+</div>
+
+<turbo-frame id="izakayas_frame">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <% @izakayas.each do |izakaya| %>
+        <div class="card shadow-lg compact bg-base-100">
+          <div class="card-body">
+            <h2 class="card-title">
+              <%= link_to izakaya.name, izakaya_path(izakaya), data: { turbo_frame: "modal_frame", action: "click->modal#open" } %>
+            </h2>
+            <%= link_to izakaya_path(izakaya), data: { turbo_frame: "modal_frame", action: "click->modal#openmodal#open" } do %>
+              <img src="<%= izakaya.image %>" alt="<%= izakaya.name %>">
+            <% end %>
+            <p>
+              <% izakaya.tags.sort_by(&:id).each do |tag| %>
+                <span class="inline-block bg-blue-500 text-white text-xs px-3 py-1 rounded-full">
+                  <%= tag.name %>
+                </span>
+              <% end %>
+            </p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </turbo-frame>
 </div>
 
 <turbo-frame id="modal_frame" data-controller="modal">

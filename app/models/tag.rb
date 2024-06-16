@@ -1,3 +1,4 @@
 class Tag < ApplicationRecord
-  has_and_belongs_to_many :izakayas
+  has_many :izakaya_tags
+  has_many :izakayas, through: :izakaya_tags
 end
