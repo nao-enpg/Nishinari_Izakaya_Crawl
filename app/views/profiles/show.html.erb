@@ -1,0 +1,13 @@
+<div class="max-w-2xl mx-auto mt-10 p-6 bg-white rounded-lg">
+  <%= turbo_frame_tag 'profile' do %>
+    <%= render partial: 'profiles/profile', locals: { user: @user } %>
+  <% end %>
+  <turbo-frame id="edit_profile"></turbo-frame>
+</div>
+
+<%# お気に入り表示%>
+<%# マイ旅程表表示　%>
+
+<div class="text-center mt-4">
+  <%= link_to 'トップページに戻る', root_path, class: 'bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded' %>
+</div>
