@@ -27,30 +27,58 @@
   </span>
 </div>
 
-<turbo-frame id="izakayas_frame">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      <% @izakayas.each do |izakaya| %>
-        <div class="card shadow-lg compact bg-base-100">
-          <div class="card-body">
-            <h2 class="card-title">
-              <%= link_to izakaya.name, izakaya_path(izakaya), data: { turbo_frame: "modal_frame", action: "click->modal#open" } %>
-            </h2>
-            <%= link_to izakaya_path(izakaya), data: { turbo_frame: "modal_frame", action: "click->modal#openmodal#open" } do %>
-              <img src="<%= izakaya.image %>" alt="<%= izakaya.name %>">
-            <% end %>
-            <p>
-              <% izakaya.tags.sort_by(&:id).each do |tag| %>
-                <span class="inline-block bg-blue-500 text-white text-xs px-3 py-1 rounded-full">
-                  <%= tag.name %>
-                </span>
-              <% end %>
-            </p>
-          </div>
-        </div>
-      <% end %>
-    </div>
-  </turbo-frame>
-</div>
+<div id="map" style="height: 500px;"></div>
+<script>
+  function initMap() {
+    const mapElement = document.getElementById('map');
 
-<turbo-frame id="modal_frame" data-controller="modal">
+    const mapOptions = {
+      center: { lat: 34.6492213, lng: 135.5033723 },
+      zoom: 16
+    };
+
+    const map = new google.maps.Map(mapElement, mapOptions);
+
+    const izakayas = <%= raw @izakayas.to_json %>;
+
+    izakayas.forEach(izakaya => {
+      let marker = new google.maps.Marker({
+        position: {lat: izakaya.lat, lng: izakaya.lng},
+        map: map,
+        title: izakaya.name
+      });
+
+      google.maps.event.addListener(marker, 'click', function() {
+        const turboFrame = document.getElementById('modal_frame');
+        turboFrame.src = `/izakayas/${izakaya.id}`;
+      });
+    });
+  }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLEMAPS_API_KEY"] %>&callback=initMap"></script>
+
+<turbo-frame id="izakayas_frame">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <% @izakayas.each do |izakaya| %>
+      <div class="card shadow-lg compact bg-base-100">
+        <div class="card-body">
+          <h2 class="card-title">
+            <%= link_to izakaya.name, izakaya_path(izakaya), data: { turbo_frame: "modal_frame", action: "click->modal#open" } %>
+          </h2>
+          <%= link_to izakaya_path(izakaya), data: { turbo_frame: "modal_frame", action: "click->modal#openmodal#open" } do %>
+            <img src="<%= izakaya.image %>" alt="<%= izakaya.name %>">
+          <% end %>
+          <p>
+            <% izakaya.tags.sort_by(&:id).each do |tag| %>
+              <span class="inline-block bg-blue-500 text-white text-xs px-3 py-1 rounded-full">
+                <%= tag.name %>
+              </span>
+            <% end %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </turbo-frame>
+
+<turbo-frame id="modal_frame" data-controller="modal"></turbo-frame>
