@@ -1,0 +1,7 @@
+<%= turbo_stream.replace 'profile' do %>
+  <%= render partial: 'profiles/profile', locals: { user: @user } %>
+<% end %>
+<%= turbo_stream.replace 'edit_profile' do %>
+<% end %>
+
+<%= turbo_stream.prepend 'flash', partial: 'shared/flash_message' %>

@@ -1,6 +1,8 @@
 <div class="bg-blue-500">
-    <div class="h-screen bg-center bg-cover flex items-center justify-center" style="background-image: url('<%= asset_path 'top.jpg' %>')">
-      <div class="text-sky-50 text-8xl font-bold p-4">Welcome to DEEP OSAKA</div>
+  <div class="h-screen bg-center bg-cover flex flex-col items-center justify-center bg-center bg-cover" style="background-image: url('<%= asset_path 'top.jpg' %>')">
+    <div class="text-sky-50 text-8xl font-bold p-4">Welcome to DEEP OSAKA</div>
+    <div class="mt-32">
+      <%= link_to '呑みに行く', izakayas_path, class: 'bg-pink-500 hover:bg-pink-700 text-white py-4 px-8 rounded' %>
     </div>
   </div>
 </div>
