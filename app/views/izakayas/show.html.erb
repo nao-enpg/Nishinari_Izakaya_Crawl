@@ -3,7 +3,7 @@
     <div class="bg-white p-6 rounded-lg">
       <h2 class="card-title text-lg font-bold mb-4"><%= @izakaya.name %></h2>
       <img src="<%= @izakaya.image %>" alt="<%= @izakaya.name %>" class="w-full h-auto rounded-md mb-4">
-      <p class="text-sm mb-4"><%= @izakaya.formatted_address %></p>
+      <p class="text-sm mb-4"><%= link_to "Google Mapで見る", @izakaya.url, target: "_blank" %></p>
       <button class="btn btn-primary w-full" data-action="modal#close">Close</button>
     </div>
   </dialog>

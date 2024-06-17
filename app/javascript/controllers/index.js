@@ -4,5 +4,7 @@
 
 import { application } from "./application"
 import ModalController from "./modal_controller"
+import MapController from "./map";
 
 application.register("modal", ModalController)
+application.register("map", MapController)

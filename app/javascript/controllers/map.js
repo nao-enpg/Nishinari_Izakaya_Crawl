@@ -1,0 +1,1 @@
+console.log('map controller loaded');
