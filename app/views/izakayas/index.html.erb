@@ -83,11 +83,11 @@
               <%= form.hidden_field 'izakaya_plan[izakaya_id]', value: izakaya.id %>
               <%= form.collection_select 'izakaya_plan[plan_id]', current_user.plans, :id, :name, prompt: "旅程表を選択" %>
               <%= form.submit '追加', class: 'btn btn-primary' %>
-            <% end %>
-          <% end %>
           <div id="favorite_izakaya_<%= izakaya.id %>_button">
             <%= render 'favorite_button', izakaya: izakaya %>
           </div>
+            <% end %>
+          <% end %>
         </div>
       </div>
     <% end %>
