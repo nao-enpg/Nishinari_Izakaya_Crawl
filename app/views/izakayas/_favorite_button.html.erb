@@ -1,0 +1,9 @@
+<% if current_user.favorites.exists?(izakaya: izakaya) %>
+  <%= button_to izakaya_favorite_path(izakaya), method: :delete, data: { turbo_stream: true, turbo_action: "replace", turbo_target: "favorite_izakaya_#{izakaya.id}_button" } do %>
+    <i class="fa-solid fa-heart"></i>
+  <% end %>
+<% else %>
+  <%= button_to izakaya_favorite_path(izakaya), method: :post, data: { turbo_stream: true, turbo_action: "replace", turbo_target: "favorite_izakaya_#{izakaya.id}_button" } do %>
+    <i class="fa-regular fa-heart"></i>
+  <% end %>
+<% end %>

@@ -4,6 +4,8 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :authentications
   has_many :plans
   has_many :izakaya_plans, through: :plans
+  has_many :favorites
+  has_many :favorite_izakayas, through: :favorites, source: :izakaya
 
   validates :name, presence: true
   validates :email, presence: true, uniqueness: true

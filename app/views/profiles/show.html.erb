@@ -5,8 +5,19 @@
   <turbo-frame id="edit_profile"></turbo-frame>
 </div>
 
-<%# お気に入り表示%>
-<%# マイ旅程表表示　%>
+<div class="mt-6">
+  <h2 class="text-xl font-bold">お気に入り居酒屋</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <%= render partial: 'favorites/favorite', collection: @user.favorites %>
+  </div>
+</div>
+
+<div class="mt-6">
+  <h2 class="text-xl font-bold">作成した旅程表</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    <%= render partial: 'plans/plan', collection: @user.plans %>
+  </div>
+</div>
 
 <div class="text-center mt-4">
   <%= link_to 'トップページに戻る', root_path, class: 'bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded' %>
