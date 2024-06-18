@@ -78,6 +78,13 @@
               </span>
             <% end %>
           </p>
+          <% if current_user && current_user.plans.any? %>
+            <%= form_with url: izakaya_plans_path, method: :post, local: true do |form| %>
+              <%= form.hidden_field 'izakaya_plan[izakaya_id]', value: izakaya.id %>
+              <%= form.collection_select 'izakaya_plan[plan_id]', current_user.plans, :id, :name, prompt: "旅程表を選択" %>
+              <%= form.submit '追加', class: 'btn btn-primary' %>
+            <% end %>
+          <% end %>
         </div>
       </div>
     <% end %>
