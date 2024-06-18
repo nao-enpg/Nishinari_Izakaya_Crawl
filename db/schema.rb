@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_16_125907) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_17_102525) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_16_125907) do
     t.datetime "updated_at", null: false
     t.index ["provider", "uid"], name: "index_authentications_on_provider_and_uid"
     t.index ["user_id"], name: "index_authentications_on_user_id"
+  end
+
+  create_table "izakaya_plans", force: :cascade do |t|
+    t.bigint "plan_id", null: false
+    t.bigint "izakaya_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["izakaya_id"], name: "index_izakaya_plans_on_izakaya_id"
+    t.index ["plan_id"], name: "index_izakaya_plans_on_plan_id"
   end
 
   create_table "izakaya_tags", force: :cascade do |t|
@@ -47,6 +56,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_16_125907) do
     t.text "url"
   end
 
+  create_table "plans", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "name"
+    t.boolean "public"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_plans_on_user_id"
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -63,6 +81,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_16_125907) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "izakaya_plans", "izakayas"
+  add_foreign_key "izakaya_plans", "plans"
   add_foreign_key "izakaya_tags", "izakayas"
   add_foreign_key "izakaya_tags", "tags"
+  add_foreign_key "plans", "users"
 end

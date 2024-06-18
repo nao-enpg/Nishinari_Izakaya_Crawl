@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   get "oauth/callback" => "oauths#callback"
   get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
 
-  resources :izakayas, only: %i[index show]
+  resources :izakayas, only: [:index, :show]
+  resources :izakaya_plans, only: [:create, :destroy]
+  resources :plans
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
