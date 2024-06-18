@@ -85,6 +85,9 @@
               <%= form.submit '追加', class: 'btn btn-primary' %>
             <% end %>
           <% end %>
+          <div id="favorite_izakaya_<%= izakaya.id %>_button">
+            <%= render 'favorite_button', izakaya: izakaya %>
+          </div>
         </div>
       </div>
     <% end %>

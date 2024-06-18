@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   get "oauth/callback" => "oauths#callback"
   get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
 
-  resources :izakayas, only: [:index, :show]
+  resources :izakayas, only: %i[index show] do
+    resource :favorite, only: %i[create destroy]
+  end
   resources :izakaya_plans, only: [:create, :destroy]
   resources :plans
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_17_102525) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_18_075029) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_17_102525) do
     t.datetime "updated_at", null: false
     t.index ["provider", "uid"], name: "index_authentications_on_provider_and_uid"
     t.index ["user_id"], name: "index_authentications_on_user_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "izakaya_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["izakaya_id"], name: "index_favorites_on_izakaya_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "izakaya_plans", force: :cascade do |t|
@@ -81,6 +90,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_17_102525) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "favorites", "izakayas"
+  add_foreign_key "favorites", "users"
   add_foreign_key "izakaya_plans", "izakayas"
   add_foreign_key "izakaya_plans", "plans"
   add_foreign_key "izakaya_tags", "izakayas"
