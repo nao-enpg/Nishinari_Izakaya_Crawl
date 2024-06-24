@@ -1,0 +1,7 @@
+<div id ="favorite_<%= izakaya.id %>">
+<% if current_user.favorite?(izakaya) %>
+    <%= render 'favorites/unfavorite', izakaya: izakaya %>
+  <% else %>
+    <%= render 'favorites/favorite', izakaya: izakaya %>
+  <% end %>
+</div>

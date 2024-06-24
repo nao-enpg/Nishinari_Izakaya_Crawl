@@ -4,7 +4,7 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :authentications
   has_many :plans
   has_many :izakaya_plans, through: :plans
-  has_many :favorites
+  has_many :favorites, dependent: :destroy
   has_many :favorite_izakayas, through: :favorites, source: :izakaya
 
   validates :name, presence: true
@@ -15,5 +15,17 @@ class User < ApplicationRecord
 
   def own?(object)
     object&.user_id == id
+  end
+
+  def favorite(izakaya)
+    favorite_izakayas << izakaya
+  end
+
+  def unfavorite(izakaya)
+    favorite_izakayas.delete(izakaya)
+  end
+
+  def favorite?(izakaya)
+    izakaya.favorites.pluck(:user_id).include?(id)
   end
 end

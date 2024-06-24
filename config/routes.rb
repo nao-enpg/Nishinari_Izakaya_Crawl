@@ -15,8 +15,12 @@ Rails.application.routes.draw do
   get "oauth/:provider" => "oauths#oauth", :as => :auth_at_provider
 
   resources :izakayas, only: %i[index show] do
-    resource :favorite, only: %i[create destroy]
+    collection do
+      get :favorites
+    end
   end
+  resources :favorites, only: %i[create destroy]
+
   resources :izakaya_plans, only: [:create, :destroy]
   resources :plans
 

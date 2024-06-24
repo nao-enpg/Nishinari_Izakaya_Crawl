@@ -1,30 +1,26 @@
 class FavoritesController < ApplicationController
-  before_action :set_izakaya
-
   def create
-    favorite = @izakaya.favorites.new(user: current_user)
-    if favorite.save
-      respond_to do |format|
-        format.turbo_stream
-        format.html { redirect_to @izakaya, notice: 'お気に入りに追加しました' }
-      end
-    else
-      redirect_to @izakaya, alert: 'お気に入りに追加できませんでした'
+    @izakaya = Izakaya.find(params[:izakaya_id])
+    current_user.favorite(@izakaya)
+
+    respond_to do |format|
+      format.html { redirect_to izakayas_path }
+      format.turbo_stream
     end
   end
 
   def destroy
-    favorite = @izakaya.favorites.find_by(user: current_user)
-    favorite.destroy
-    respond_to do |format|
-      format.turbo_stream
-      format.html { redirect_to @izakaya, notice: 'お気に入りを削除しました' }
+    favorite = current_user.favorites.find_by(id: params[:id])
+    if favorite
+      @izakaya = favorite.izakaya
+      current_user.unfavorite(@izakaya)
+
+      respond_to do |format|
+        format.html { redirect_to izakayas_path, status: :see_other }
+        format.turbo_stream
+      end
+    else
+      redirect_to izakayas_path, alert: 'Favorite not found'
     end
-  end
-
-  private
-
-  def set_izakaya
-    @izakaya = Izakaya.find(params[:izakaya_id])
   end
 end

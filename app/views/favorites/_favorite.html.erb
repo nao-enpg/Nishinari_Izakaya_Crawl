@@ -1,4 +1,3 @@
-<div class="m-4 p-4 bg-gray-100 rounded-lg shadow-md">
-  <h3 class="text-lg font-semibold"><%= favorite.izakaya.name %></h3>
-  <%= link_to '詳細', izakaya_path(favorite.izakaya), class: 'bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded' %>
-</div>
+<%= link_to favorites_path(izakaya_id: izakaya.id), id: "favorite-button-for-izakaya-#{izakaya.id}", data: { "turbo-method": :post } do %>
+  <i class="fa-regular fa-heart"></i>
+<% end %>
