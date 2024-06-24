@@ -5,7 +5,7 @@ class IzakayasController < ApplicationController
     @q = Izakaya.ransack(params[:q])
     @izakayas = @q.result(distinct: true).includes(:tags, :favorites).order(id: :asc)
     @tags = Tag.order(id: :asc).all
-    @plan_exists = Plan.exists?(user_id: current_user.id)
+    @plan_exists = current_user ? Plan.exists?(user_id: current_user.id) : false
 
     respond_to do |format|
       format.html
