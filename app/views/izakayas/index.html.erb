@@ -18,14 +18,14 @@
   <div class="flex flex-wrap gap-2">
     <% @tags.each do |tag| %>
       <span class="inline-block bg-blue-500 hover:bg-blue-700 text-white text-xs px-3 py-1 rounded-full">
-        <%= link_to tag.name, izakayas_path(q: { tags_id_in: [*params.dig(:q, :tags_id_in), tag.id].uniq }), data: { turbo_frame: "izakayas_frame" } %>
+        <%= link_to tag.name, izakayas_path(q: { tags_id_in: [*params.dig(:q, :tags_id_in), tag.id].uniq }) %>
       </span>
     <% end %>
   </div>
 
   <div class="mt-4">
     <span class="inline-block bg-red-500 hover:bg-red-700 text-white text-xs px-3 py-1 rounded-full">
-      <%= link_to "絞り込み解除", izakayas_path, data: { turbo_frame: "izakayas_frame" } %>
+      <%= link_to "絞り込み解除", izakayas_path %>
     </span>
   </div>
 </div>
@@ -52,48 +52,43 @@
       });
 
       google.maps.event.addListener(marker, 'click', function() {
-        const turboFrame = document.getElementById('modal_frame');
-        turboFrame.src = `/izakayas/${izakaya.id}`;
+      window.location.href = `/izakayas/${izakaya.id}`;
       });
     });
   }
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLEMAPS_API_KEY"] %>&callback=initMap"></script>
 
-<turbo-frame id="izakayas_frame">
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-    <% @izakayas.each do |izakaya| %>
-      <div class="card shadow-lg compact bg-base-100">
-        <div class="card-body">
-          <h2 class="card-title">
-            <%= link_to izakaya.name, izakaya_path(izakaya), data: { turbo_frame: "modal_frame", action: "click->modal#open" } %>
-          </h2>
-          <%= link_to izakaya_path(izakaya), data: { turbo_frame: "modal_frame", action: "click->modal#openmodal#open" } do %>
-            <img src="<%= izakaya.image %>" alt="<%= izakaya.name %>">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+  <% @izakayas.each do |izakaya| %>
+    <div class="card shadow-lg compact bg-base-100">
+      <div class="card-body">
+        <h2 class="card-title">
+          <%= link_to izakaya.name, izakaya_path(izakaya) %>
+        </h2>
+        <%= link_to izakaya_path(izakaya) do %>
+          <img src="<%= izakaya.image %>" alt="<%= izakaya.name %>" class="w-full h-auto object-contain max-h-72">
+        <% end %>
+        <p>
+          <% izakaya.tags.sort_by(&:id).each do |tag| %>
+            <span class="inline-block bg-blue-500 text-white text-xs px-3 py-1 rounded-full">
+              <%= tag.name %>
+            </span>
           <% end %>
-          <p>
-            <% izakaya.tags.sort_by(&:id).each do |tag| %>
-              <span class="inline-block bg-blue-500 text-white text-xs px-3 py-1 rounded-full">
-                <%= tag.name %>
-              </span>
-            <% end %>
-          </p>
-          <% if current_user && @plan_exists %>
-            <%= form_with url: izakaya_plans_path, method: :post, local: true do |form| %>
-              <%= form.hidden_field 'izakaya_plan[izakaya_id]', value: izakaya.id %>
-              <%= form.collection_select 'izakaya_plan[plan_id]', current_user.plans, :id, :name, prompt: "旅程表を選択" %>
-              <%= form.submit '追加', class: 'btn btn-primary' %>
-            <% end %>
+        </p>
+        <% if current_user && @plan_exists %>
+          <%= form_with url: izakaya_plans_path, method: :post, local: true do |form| %>
+            <%= form.hidden_field 'izakaya_plan[izakaya_id]', value: izakaya.id %>
+            <%= form.collection_select 'izakaya_plan[plan_id]', current_user.plans, :id, :name, prompt: "旅程表を選択" %>
+            <%= form.submit '追加', class: 'btn btn-primary' %>
           <% end %>
-          <% if current_user %>
-          <div id="favorite_izakaya_<%= izakaya.id %>_button">
-            <%= render 'favorites/favorite_button', izakaya: izakaya %>
-          </div>
-          <% end %>
+        <% end %>
+        <% if current_user %>
+        <div id="favorite_izakaya_<%= izakaya.id %>_button">
+          <%= render 'favorites/favorite_button', izakaya: izakaya %>
         </div>
+        <% end %>
       </div>
-    <% end %>
-  </div>
-</turbo-frame>
-
-<turbo-frame id="modal_frame" data-controller="modal"></turbo-frame>
+    </div>
+  <% end %>
+</div>
