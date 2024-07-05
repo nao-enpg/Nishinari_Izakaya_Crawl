@@ -64,7 +64,7 @@
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLEMAPS_API_KEY"] %>&callback=initMap"></script>
 
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-16">
   <% @izakayas.each do |izakaya| %>
     <div class="card shadow-lg compact bg-base-100">
       <div class="card-body">
