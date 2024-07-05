@@ -1,10 +1,12 @@
-<div class="bg-white p-6 rounded-lg">
-  <h2 class="card-title text-lg font-bold mb-4"><%= @izakaya.name %></h2>
-  <img src="<%= @izakaya.image %>" alt="<%= @izakaya.name %>" class="w-full h-auto rounded-md mb-4 object-contain max-h-72">
-  <p class="text-sm mb-4">
-    <%= link_to "Google Mapで見る", @izakaya.url, target: "_blank", class: "btn btn-xs btn-blue mr-2" %>
-    <%= link_to "YouTubeで検索", "https://www.youtube.com/results?search_query=#{ERB::Util.url_encode("西成 " + @izakaya.name)}", target: "_blank", class: "btn btn-xs btn-blue" %>
-  </p>
-  <p class="text-sm mb-4"><%= @izakaya.description %></p>
-  <%= link_to 'Back', izakayas_path, class: "btn btn-primary w-full" %>
+<div class="flex justify-center items-center">
+  <div class="bg-white p-6 rounded-lg w-1/2">
+    <h2 class="card-title text-lg font-bold mb-4"><%= @izakaya.name %></h2>
+    <img src="<%= @izakaya.image %>" alt="<%= @izakaya.name %>" class="w-full h-auto rounded-md mb-4 object-contain max-h-72">
+    <p class="text-sm mb-4">
+      <%= link_to "Google Mapで見る", @izakaya.url, target: "_blank", class: "btn btn-xs btn-blue mr-2" %>
+      <%= link_to "YouTubeで検索", "https://www.youtube.com/results?search_query=#{ERB::Util.url_encode("西成 " + @izakaya.name)}", target: "_blank", class: "btn btn-xs btn-blue" %>
+    </p>
+    <p class="text-sm mb-4"><%= @izakaya.description %></p>
+    <%= link_to 'Back', izakayas_path, class: "btn btn-primary w-full" %>
+  </div>
 </div>
