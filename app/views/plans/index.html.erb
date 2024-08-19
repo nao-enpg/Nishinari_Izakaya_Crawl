@@ -1,7 +1,7 @@
 <% if logged_in? %>
   <%= link_to '旅程表を作成', new_plan_path, class: 'btn bg-blue-500 hover:bg-blue-700 text-white m-4' %>
 <% else %>
-  <%= link_to '旅程表を作成(ユーザー登録)', auth_at_provider_path(provider: :google), class: 'btn bg-blue-500 hover:bg-blue-700 text-white m-4' %>
+  <%= link_to '旅程表を作成(Googleログイン)', auth_at_provider_path(provider: :google), class: 'btn bg-blue-500 hover:bg-blue-700 text-white m-4' %>
 <% end %>
 <ul class="flex flex-wrap justify-center">
 <% @plans.each do |plan| %>
