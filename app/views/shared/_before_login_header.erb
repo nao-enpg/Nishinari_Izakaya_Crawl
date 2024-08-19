@@ -5,7 +5,10 @@
       <a href="/" class="text-white text-2xl font-bold ml-4">西成泥酔旅行</a>
     </div>
     <div class="block">
-      <%= link_to 'Googleアカウントでログイン', auth_at_provider_path(provider: :google) %>
+      <%= link_to auth_at_provider_path(provider: :google), class: "flex items-center py-2 px-4" do %>
+        <%= image_tag 'web_dark_rd_na.svg', alt: 'Google Logo', class: 'w-6 h-6 mr-2' %>
+        Googleログイン
+      <% end %>
     </div>
   </div>
 </header>
