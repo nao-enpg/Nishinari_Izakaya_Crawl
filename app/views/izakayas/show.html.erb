@@ -7,6 +7,6 @@
       <%= link_to "YouTubeで検索", "https://www.youtube.com/results?search_query=#{ERB::Util.url_encode("西成 " + @izakaya.name)}", target: "_blank", class: "btn btn-xs btn-blue" %>
     </p>
     <p class="text-sm mb-4"><%= @izakaya.description %></p>
-    <%= link_to 'Back', izakayas_path, class: "btn btn-primary w-full" %>
+    <%# link_to 'Back', izakayas_path, class: "btn btn-primary w-full" %>
   </div>
 </div>
