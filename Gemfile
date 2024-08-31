@@ -83,6 +83,7 @@ group :test do
 end
 
 gem 'dotenv-rails'
+gem 'geocoder'
 gem 'google_places'
 gem 'sorcery', '~> 0.17.0'
 gem 'config'
