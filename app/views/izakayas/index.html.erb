@@ -16,7 +16,7 @@
     <% end %>
   </div>
 
-  <button id="toggleTags" class="bg-blue-500 text-white p-2 ml-4 rounded">タグで検索する(おすすめ)</button>
+  <button id="toggleTags" class="bg-blue-500 text-white p-2 ml-4 rounded">タグで検索する</button>
   <div id="tagSearchContainer" class="flex flex-wrap gap-2" style="display: none;">
     <% selected_tags = Array(params.dig(:q, :tags_id_all)) %>
     <% @tags.each do |tag| %>
@@ -36,9 +36,15 @@
   <% end %>
 
   <div>
-    <button id="toggleMap" class="bg-blue-500 text-white p-2 ml-4 mt-4 rounded">Googleマップを表示</button>
+    <button id="toggleMap" class="bg-blue-500 text-white p-2 ml-4 my-2 rounded">Googleマップを表示</button>
     <div id="map" style="height: 500px; display: none;"></div>
   </div>
+
+  <button onclick="getLocationAndSubmit()" id="get-button" class="bg-blue-500 text-white p-2 ml-4 mx-2 rounded">現在地から近い10件を表示</button>
+  <%= form_tag({controller:"izakayas",action:"index"}, method: :get, id: "location-form") do %>
+    <%= hidden_field_tag :lat, nil, id: :lat %>
+    <%= hidden_field_tag :lng, nil, id: :lng %>
+  <% end %>
 </div>
 
 <script>
@@ -46,23 +52,35 @@
     const searchContainer = document.getElementById('searchContainer');
     if (searchContainer.style.display === 'none') {
       searchContainer.style.display = 'block';
-      this.textContent = '店名検索を隠す'; // ボタンのテキストを変更
+      this.textContent = '店名検索を隠す';
     } else {
       searchContainer.style.display = 'none';
-      this.textContent = '店名で検索する'; // ボタンのテキストを戻す
+      this.textContent = '店名で検索する';
     }
   });
 
   document.getElementById('toggleTags').addEventListener('click', function() {
-  const tagSearchContainer = document.getElementById('tagSearchContainer');
-  if (tagSearchContainer.style.display === 'none') {
-    tagSearchContainer.style.display = 'block';
-    this.textContent = 'タグ検索を隠す'; // ボタンのテキストを変更
-  } else {
-    tagSearchContainer.style.display = 'none';
-    this.textContent = 'タグで検索する(おすすめ)'; // ボタンのテキストを戻す
-  }
-});
+    const tagSearchContainer = document.getElementById('tagSearchContainer');
+    if (tagSearchContainer.style.display === 'none') {
+      tagSearchContainer.style.display = 'block';
+      this.textContent = 'タグ検索を隠す';
+    } else {
+      tagSearchContainer.style.display = 'none';
+      this.textContent = 'タグで検索する';
+    }
+  });
+
+  document.getElementById('toggleMap').addEventListener('click', function() {
+    const mapElement = document.getElementById('map');
+    if (mapElement.style.display === 'none') {
+      mapElement.style.display = 'block';
+      initMap();
+      this.textContent = 'Googleマップを隠す';
+    } else {
+      mapElement.style.display = 'none';
+      this.textContent = 'Googleマップを表示';
+    }
+  });
 
   function initMap() {
     const mapElement = document.getElementById('map');
@@ -89,24 +107,26 @@
     });
   }
 
-  document.getElementById('toggleMap').addEventListener('click', function() {
-    const mapElement = document.getElementById('map');
-    if (mapElement.style.display === 'none') {
-      mapElement.style.display = 'block';
-      initMap(); // 初めてマップを表示する場合、初期化
-      this.textContent = 'Googleマップを隠す'; // ボタンのテキストを変更
+  function getLocationAndSubmit() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPositionAndSubmit);
     } else {
-      mapElement.style.display = 'none';
-      this.textContent = 'Googleマップを表示'; // ボタンのテキストを戻す
+      alert("Geolocation is not supported by this browser.");
     }
-  });
+  }
+
+  function showPositionAndSubmit(position) {
+    document.getElementById('lat').value = position.coords.latitude;
+    document.getElementById('lng').value = position.coords.longitude;
+    document.getElementById('location-form').submit();
+  }
 </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=<%= ENV["GOOGLEMAPS_API_KEY"] %>&callback=initMap"></script>
 
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pb-16">
   <% @izakayas.each do |izakaya| %>
     <div class="card shadow-lg compact bg-base-100">
-      <div class="card-body">
+      <div class="card-body bg-slate-600">
         <h2 class="card-title">
           <%= link_to izakaya.name, izakaya_path(izakaya) %>
         </h2>
