@@ -3,10 +3,14 @@ class PlansController < ApplicationController
   before_action :set_plan, only: %i[show edit update destroy]
 
   def index
-    @plans = Plan.includes(:izakayas)
+    @plans = Plan.includes(:izakayas).where(public: true).or(Plan.where(user: current_user))
   end
 
   def show
+    @plan = Plan.find(params[:id])
+    unless current_user&.own?(@plan) || @plan.public?
+      redirect_to plans_path, alert: 'この旅程表は非公開です'
+    end
     @izakayas = @plan.izakayas
     @izakaya_plan = IzakayaPlan.find_by(plan: @plan)
   end
