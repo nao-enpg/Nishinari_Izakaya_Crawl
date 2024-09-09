@@ -9,7 +9,7 @@ class PlansController < ApplicationController
   def show
     @plan = Plan.find(params[:id])
     unless current_user&.own?(@plan) || @plan.public?
-      redirect_to plans_path, alert: 'この旅程表は非公開です'
+      redirect_to plans_path, alert: t('.plans.public_false')
     end
     @izakayas = @plan.izakayas
     @izakaya_plan = IzakayaPlan.find_by(plan: @plan)
@@ -24,7 +24,7 @@ class PlansController < ApplicationController
     @plan.user = current_user
 
     if @plan.save
-      redirect_to @plan, notice: '旅程表を作成しました'
+      redirect_to @plan, notice: t('.success')
     else
       render :new
     end
@@ -34,7 +34,7 @@ class PlansController < ApplicationController
 
   def update
     if @plan.update(plan_params)
-      redirect_to @plan, notice: '更新しました'
+      redirect_to @plan, notice: t('.success')
     else
       render :edit
     end
@@ -42,7 +42,7 @@ class PlansController < ApplicationController
 
   def destroy
     @plan.destroy!
-    redirect_to plans_path, success: '削除しました', status: :see_other
+    redirect_to plans_path, success: t('.success'), status: :see_other
   end
 
   private
