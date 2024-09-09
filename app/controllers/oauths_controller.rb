@@ -9,14 +9,14 @@ class OauthsController < ApplicationController
     provider = auth_params[:provider]
 
     if (@user = login_from(provider))
-      redirect_to root_path, success: 'Googleアカウントでログインしました'
+      redirect_to root_path, success: t('oauth.login_success')
     else
       begin
         signup_and_login(provider)
-        redirect_to root_path, success: 'Googleアカウントでログインしました'
+        redirect_to root_path, success: t('oauth.login_success')
       rescue StandardError => e
         Rails.logger.error("OAuth login failed: #{e.message}")
-        redirect_to root_path, danger: 'Googleアカウントでのログインに失敗しました'
+        redirect_to root_path, danger: t('oauth.login_failure')
       end
     end
   end

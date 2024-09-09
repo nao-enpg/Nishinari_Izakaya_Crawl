@@ -1,0 +1,30 @@
+en:
+  activerecord:
+    models:
+      izakaya: "Izakaya"
+      plan: "Plan"
+    attributes:
+      izakaya:
+        name: "Name"
+      plan:
+        name: "Plan Title"
+        public: "Public Status"
+  oauth:
+    login_success: "Logged in with Google account"
+    login_failure: "Failed to log in with Google account"
+  user_sessions:
+    login_success: "Logged in"
+    login_failure: "Failed to log in"
+    logout_success: "Logged out"
+  plans:
+    public_false: "This plan is private"
+    create:
+      success: "Plan created successfully"
+    update:
+      success: "Updated successfully"
+    destroy:
+      success: "Deleted successfully"
+  profiles:
+    update:
+      success: "Profile updated successfully"
+      danger: "Failed to update profile"

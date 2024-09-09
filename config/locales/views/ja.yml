@@ -1,0 +1,79 @@
+ja:
+  layouts:
+    application:
+      title: "西成泥酔旅行"
+  static_pages:
+    top:
+      description: "大阪西成で飲み歩きするあなたに最高の居酒屋情報を提供します"
+      izakaya: "呑みに行く"
+      izakaya_description: "行きたい居酒屋を検索できます"
+      plan: "呑み計画を立てる"
+      plan_description: "最高の飲み歩き計画を作れます"
+  izakayas:
+    index:
+      title: "居酒屋一覧"
+      search_by_name: "店名で検索する"
+      hide_search_by_name: "店名検索を隠す"
+      search_by_tags: "タグで検索する"
+      hide_search_by_tags: "タグで検索を隠す"
+      search: "検索"
+      clear_search: "検索解除"
+      clear_narrow_down: "絞り込み解除"
+      show_map: "Googleマップを表示"
+      hide_map: "Googleマップを隠す"
+      search_nearby: "現在地から近い10件を表示"
+      select_plan: "旅程表を選択"
+      add_izakaya: "追加"
+    show:
+      title: "居酒屋詳細"
+      back: "戻る"
+      google_map: "Google Mapで見る"
+      direction_search: "行き方を調べる"
+      youtube_search: "YouTubeで検索"
+  plans:
+    index:
+      title: "旅程表一覧"
+      create_plan: "旅程表を作成"
+      create_plan_login: "旅程表を作成(Googleログイン)"
+      show: "見る"
+      edit: "編集"
+      delete: "削除"
+    show:
+      title: "旅程表詳細"
+      izakaya_list: "居酒屋リスト"
+      add_izakaya: "居酒屋を追加"
+      show: "詳細"
+      back: "戻る"
+      delete: "削除"
+      confirm_delete: "削除しますか？"
+      public: "公開状態"
+      public_true: "公開"
+      public_false: "非公開"
+    new:
+      submit: "作成"
+      back: "戻る"
+    edit:
+      submit: "更新"
+      back: "戻る"
+  favorites:
+    show: "詳細"
+  profiles:
+    profile: "プロフィール"
+    edit_name: "名前を編集"
+    show:
+      favorite_izakaya: "お気に入り居酒屋"
+      plan_list: "作成した旅程表"
+      back: "トップページに戻る"
+    edit:
+      submit: "更新"
+  header:
+    title: "西成泥酔旅行"
+    login: "Googleログイン"
+    logout: "ログアウト"
+    mypage: "マイページ"
+  footer:
+    title: "西成泥酔旅行"
+    contact: "お問い合わせ"
+    terms_of_use: "利用規約"
+    privacy_policy: "プライバシーポリシー"
+

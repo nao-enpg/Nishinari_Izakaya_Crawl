@@ -1,19 +1,19 @@
 <h1 class="text-3xl font-bold mb-6"><%= @plan.name %></h1>
 
 <p class="mb-4">
-  <strong>公開状態:</strong>
-  <%= @plan.public ? '公開' : '非公開' %>
+  <strong><%= t('.public') %> :</strong>
+  <%= @plan.public ? t('.public_true') : t('.public_false') %>
 </p>
 
-<h2 class="text-2xl font-semibold mb-4">居酒屋リスト</h2>
+<h2 class="text-2xl font-semibold mb-4"><%= t('.izakaya_list') %></h2>
 <div class="grid grid-cols-1 gap-4">
   <% @izakayas.each do |izakaya| %>
     <div class="card bg-white shadow-md rounded-lg p-4 flex justify-between place-items-center">
       <div class="card-body">
         <h3 class="card-title text-xl font-bold"><%= izakaya.name %></h3>
-        <%= link_to '詳細', izakaya_path(izakaya), class: 'btn btn-primary' %>
+        <%= link_to t('.show'), izakaya_path(izakaya), class: 'btn btn-primary' %>
         <% if current_user&.own?(@plan) %>
-          <%= link_to '削除', izakaya_plan_path(@izakaya_plan), data: { turbo_method: :delete, turbo_confirm: '削除しますか？' }, class: 'btn btn-error' %>
+          <%= link_to t('.delete'), izakaya_plan_path(@izakaya_plan), data: { turbo_method: :delete, turbo_confirm: t('.confirm_delete') }, class: 'btn btn-error' %>
         <% end %>
       </div>
     </div>
@@ -22,7 +22,7 @@
 
 <div class="mt-6 flex space-x-4">
   <% if current_user&.own?(@plan) %>
-    <%= link_to '居酒屋を追加', izakayas_path, class: 'btn btn-primary' %>
+    <%= link_to t('.add_izakaya'), izakayas_path, class: 'btn btn-primary' %>
   <% end %>
-  <%= link_to '戻る', plans_path, class: 'btn btn-secondary' %>
+  <%= link_to t('.back'), plans_path, class: 'btn btn-secondary' %>
 </div>

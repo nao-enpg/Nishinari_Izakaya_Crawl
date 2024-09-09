@@ -1,11 +1,13 @@
 <header class="bg-gray-800 fixed top-0 left-0 w-full z-10">
   <div class="flex items-center justify-between h-16">
     <div class="flex items-center">
-      <a href="/" class="text-white text-2xl font-bold ml-4">西成泥酔旅行</a>
+      <a href="/" class="text-white text-2xl font-bold ml-4 px-2"><%= t('header.title') %></a>
+      <%= link_to 'JP', url_for(locale: :ja), class: "text-white text-xs py-2 px-2" %> /
+      <%= link_to 'EN', url_for(locale: :en), class: "text-white text-xs py-2 px-2" %>
     </div>
     <div class="block ml-auto">
-      <%= link_to 'マイページ', profile_path %> /
-      <%= link_to 'ログアウト', logout_path, data: { turbo_method: :delete } %>
+      <%= link_to t('header.mypage'), profile_path %> /
+      <%= link_to t('header.logout'), logout_path, data: { turbo_method: :delete } %>
     </div>
   </div>
 </header>

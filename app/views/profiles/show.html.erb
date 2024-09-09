@@ -6,19 +6,19 @@
 </div>
 
 <div class="mt-6">
-  <h2 class="text-xl font-bold">お気に入り居酒屋</h2>
+  <h2 class="text-xl font-bold"><%= t('.favorite_izakaya') %></h2>
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
     <%= render partial: 'favorites/favorites', collection: @user.favorites %>
   </div>
 </div>
 
 <div class="mt-6">
-  <h2 class="text-xl font-bold">作成した旅程表</h2>
+  <h2 class="text-xl font-bold"><%= t('.plan_list') %></h2>
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
     <%= render partial: 'plans/plan', collection: @user.plans %>
   </div>
 </div>
 
 <div class="text-center mt-4">
-  <%= link_to 'トップページに戻る', root_path, class: 'bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded' %>
+  <%= link_to t('.back'), root_path, class: 'bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded' %>
 </div>

@@ -1,0 +1,80 @@
+en:
+  layouts:
+    application:
+      title: "Nishinari Izakaya Crawl"
+  static_pages:
+    top:
+      description: "Providing the best izakaya information for you to bar hop in Osaka Nishinari"
+      izakaya: "Go Drinking"
+      izakaya_description: "You can search for the izakaya you want to go to"
+      plan: "Make a Drinking Plan"
+      plan_description: "You can create the best bar hopping plan"
+  izakayas:
+    index:
+      title: "Izakaya List"
+      search_by_name: "Search by Name"
+      hide_search_by_name: "Hide Name Search"
+      search_by_tags: "Search by Tags"
+      hide_search_by_tags: "Hide Tag Search"
+      search: "Search"
+      clear_search: "Clear Search"
+      clear_narrow_down: "Clear Narrow Down"
+      show_map: "Show Google Map"
+      hide_map: "Hide Google Map"
+      search_nearby: "Show 10 Nearby from Current Location"
+      select_plan: "Select Itinerary"
+      add_izakaya: "Add"
+    show:
+      title: "Izakaya Details"
+      back: "Back"
+      google_map: "View on Google Map"
+      direction_search: "Search Directions"
+      youtube_search: "Search on YouTube"
+  plans:
+    index:
+      title: "Itinerary List"
+      create_plan: "Create Itinerary"
+      create_plan_login: "Create Itinerary (Google Login)"
+      show: "View"
+      edit: "Edit"
+      delete: "Delete"
+    show:
+      title: "Itinerary Details"
+      izakaya_list: "Izakaya List"
+      add_izakaya: "Add Izakaya"
+      show: "Details"
+      back: "Back"
+      delete: "Delete"
+      confirm_delete: "Are you sure you want to delete?"
+      public: "Public Status"
+      public_true: "Public"
+      public_false: "Private"
+    new:
+      submit: "Create"
+      back: "Back"
+    edit:
+      submit: "Update"
+      back: "Back"
+  favorites:
+    show: "Details"
+  profiles:
+    profile: "Profile"
+    edit_name: "Edit Name"
+    show:
+      favorite_izakaya: "Favorite Izakayas"
+      plan_list: "Created Itineraries"
+      back: "Back to Top Page"
+    edit:
+      submit: "Update"
+  header:
+    title: "Nishinari Izakaya Crawl"
+    login: "Google Login"
+    logout: "Logout"
+    mypage: "My Page"
+  footer:
+    title: "Nishinari Izakaya Crawl"
+    contact: "Contact Us"
+    terms_of_use: "Terms of Use"
+    privacy_policy: "Privacy Policy"
+
+

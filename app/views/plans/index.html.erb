@@ -1,7 +1,7 @@
 <% if logged_in? %>
-  <%= link_to '旅程表を作成', new_plan_path, class: 'btn bg-blue-500 hover:bg-blue-700 text-white m-4' %>
+  <%= link_to t('.create_plan'), new_plan_path, class: 'btn bg-blue-500 hover:bg-blue-700 text-white m-4' %>
 <% else %>
-  <%= link_to '旅程表を作成(Googleログイン)', auth_at_provider_path(provider: :google), class: 'btn bg-blue-500 hover:bg-blue-700 text-white m-4' %>
+  <%= link_to t('.create_plan_login'), auth_at_provider_path(provider: :google), class: 'btn bg-blue-500 hover:bg-blue-700 text-white m-4' %>
 <% end %>
 <ul class="flex flex-wrap justify-center">
 <% @plans.each do |plan| %>
@@ -17,10 +17,10 @@
         <div class="card-title text-2xl text-white"><%= plan.name %></div>
         <p></p>
         <div class="card-actions justify-end">
-          <%= link_to '見る', plan_path(plan), class: 'btn btn-primary' %>
+          <%= link_to t('.show'), plan_path(plan), class: 'btn btn-primary' %>
           <% if current_user&.own?(plan) %>
-            <%= link_to '編集', edit_plan_path(plan), class: 'btn btn-accent' %>
-            <%= link_to '削除', plan_path(plan), data: { turbo_method: :delete, turbo_confirm: '削除しますか？' }, class: 'btn btn-error' %>
+            <%= link_to t('.edit'), edit_plan_path(plan), class: 'btn btn-accent' %>
+            <%= link_to t('.delete'), plan_path(plan), data: { turbo_method: :delete, turbo_confirm: '削除しますか？' }, class: 'btn btn-error' %>
           <% end %>
         </div>
       </div>

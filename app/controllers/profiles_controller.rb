@@ -8,11 +8,11 @@ class ProfilesController < ApplicationController
   def update
     if @user.update(user_params)
       respond_to do |format|
-        format.html { redirect_to profile_path, success: 'プロフィールを更新しました' }
-        format.turbo_stream { flash.now[:success] = 'プロフィールを更新しました' }
+        format.html { redirect_to profile_path, success: t('.success') }
+        format.turbo_stream { flash.now[:success] = t('.success') }
       end
     else
-      flash.now['danger'] = 'プロフィールの更新に失敗しました'
+      flash.now['danger'] = t('.danger')
       render :edit, status: :unprocessable_entity
     end
   end

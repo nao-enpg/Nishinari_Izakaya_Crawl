@@ -1,0 +1,30 @@
+ja:
+  activerecord:
+    models:
+      izakaya: "居酒屋"
+      plan: "旅程表"
+    attributes:
+      izakaya:
+        name: "店名"
+      plan:
+        name: "旅程タイトル"
+        public: "公開状態"
+  oauth:
+    login_success: "Googleアカウントでログインしました"
+    login_failure: "Googleアカウントでのログインに失敗しました"
+  user_sessions:
+    login_success: "ログインしました"
+    login_failure: "ログインに失敗しました"
+    logout_success: "ログアウトしました"
+  plans:
+    public_false: "この旅程表は非公開です"
+    create:
+      success: "旅程表を作成しました"
+    update:
+      success: "更新しました"
+    destroy:
+      success: "削除しました"
+  plofiles:
+    update:
+      success: "プロフィールを更新しました"
+      danger: "プロフィールの更新に失敗しました"
