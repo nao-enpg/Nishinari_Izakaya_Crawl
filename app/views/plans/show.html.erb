@@ -1,28 +1,29 @@
-<h1 class="text-3xl font-bold mb-6"><%= @plan.name %></h1>
-
-<p class="mb-4">
+<div class="pt-16 pb-4 pl-4">
+  <h1 class="text-3xl font-bold mb-6 text-white"><%= @plan.name %></h1>
+</div>
+<p class="mb-4 pl-4 text-white">
   <strong><%= t('.public') %> :</strong>
   <%= @plan.public ? t('.public_true') : t('.public_false') %>
 </p>
 
-<h2 class="text-2xl font-semibold mb-4"><%= t('.izakaya_list') %></h2>
-<div class="grid grid-cols-1 gap-4">
+<h2 class="text-2xl font-semibold mb-4 pl-4 text-white"><%= t('.izakaya_list') %></h2>
+<div class="grid grid-cols-1 gap-4 max-w-md mx-auto">
   <% @izakayas.each do |izakaya| %>
-    <div class="card bg-white shadow-md rounded-lg p-4 flex justify-between place-items-center">
+    <div class="card bg-white shadow-md rounded-lg p-4 flex justify-between items-center" style="background-image: url('<%= izakaya.image %>'); background-size: cover; background-position: center;">
       <div class="card-body">
-        <h3 class="card-title text-xl font-bold"><%= izakaya.name %></h3>
-        <%= link_to t('.show'), izakaya_path(izakaya), class: 'btn btn-primary' %>
+        <h3 class="card-title text-xl font-bold text-white bg-slate-950 opacity-70 p-2"><%= izakaya.name %></h3>
+        <%= link_to t('.show'), izakaya_path(izakaya), class: 'btn bg-zinc-500 hover:bg-zinc-700 text-white' %>
         <% if current_user&.own?(@plan) %>
-          <%= link_to t('.delete'), izakaya_plan_path(@izakaya_plan), data: { turbo_method: :delete, turbo_confirm: t('.confirm_delete') }, class: 'btn btn-error' %>
+          <%= link_to t('.delete'), izakaya_plan_path(@izakaya_plan), data: { turbo_method: :delete, turbo_confirm: t('.confirm_delete') }, class: 'btn bg-zinc-500 hover:bg-zinc-700 text-white' %>
         <% end %>
       </div>
     </div>
   <% end %>
 </div>
 
-<div class="mt-6 flex space-x-4">
+<div class="mt-6 p-2 flex space-x-4">
   <% if current_user&.own?(@plan) %>
-    <%= link_to t('.add_izakaya'), izakayas_path, class: 'btn btn-primary' %>
+    <%= link_to t('.add_izakaya'), izakayas_path, class: 'btn bg-zinc-500 hover:bg-zinc-700 text-white' %>
   <% end %>
-  <%= link_to t('.back'), plans_path, class: 'btn btn-secondary' %>
+  <%= link_to t('.back'), plans_path, class: 'btn bg-zinc-500 hover:bg-zinc-700 text-white' %>
 </div>

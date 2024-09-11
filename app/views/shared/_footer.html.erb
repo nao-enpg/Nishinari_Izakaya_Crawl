@@ -1,16 +1,15 @@
-<%# TailwindCSSを利用して、問い合わせページ・利用規約・プライバシーポリシーへのリンク %>
-<footer class="fixed bottom-0 left-0 w-full bg-gray-800 text-white">
-  <div class="flex items-center justify-between h-16">
-    <nav class="lg:flex items-center">
+<footer class="fixed bottom-0 left-0 right-0 text-white">
+  <div class="flex items-center justify-between">
+    <nav class="lg:flex items-center mb-4">
       <% footer_links = [
         { path: 'https://x.com/nao_enpg', text: t('footer.contact') },
         { path: '/', text: t('footer.terms_of_use') },
         { path: '/', text: t('footer.privacy_policy') }
       ] %>
       <% footer_links.each do |link| %>
-        <a href="<%= link[:path] %>" class="text-white text-sm font-bold ml-4"><%= link[:text] %></a>
+        <a href="<%= link[:path] %>" class="text-xs font-bold ml-2"><%= link[:text] %></a>
       <% end %>
     </nav>
-    <span class="text-white text-sm font-bold mr-4">© <%= t('footer.title') %></span>
+    <span class="text-xs font-bold mr-2 mb-4">© <%= t('footer.title') %></span>
   </div>
 </footer>

@@ -1,20 +1,25 @@
-<div class="pb-16">
-  <div class="h-screen flex flex-col items-center justify-center bg-center bg-cover" style="background-image: url('<%= asset_path 'top_small.jpg' %>')">
-    <div class="text-sky-50 text-6xl md:text-8xl font-bold p-4 font-sans">Welcome to DEEP OSAKA</div>
-    <div class="mt-32 text-sky-50 text-2xl font-bold bg-slate-900 opacity-80 p-4 rounded"><%= t('.description') %></div>
-    <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-4 text-sky-50">
+<div class="pb-0">
+  <div class="h-screen flex flex-col items-center justify-center bg-center bg-cover text-sky-50" style="background-image: url('<%= asset_path 'top_small.jpg' %>')">
+    <div class="text-5xl md:text-8xl font-bold p-4 font-sans">Welcome to DEEP OSAKA</div>
+    <div class="mt-4 md:mt-32 p-2 md:p-4 text-lg md:text-2xl font-bold text-center bg-slate-900 opacity-80 rounded"><%= t('.description') %></div>
+    <div class="mt-4 md:mt-16 grid grid-cols-2 gap-4">
       <%= link_to izakayas_path, class: 'card bg-sky-500 shadow-xl' do %>
         <div class="card-body" style="background-image: url('<%= asset_path 'beer.jpg' %>'); background-size: cover; background-position: center;" aria-label="呑みに行く">
-          <h2 class="card-title"><%= t('.izakaya') %></h2>
-          <p><%= t('.izakaya_description') %></p>
+          <div class="bg-slate-950 opacity-70">
+            <h2 class="card-title"><%= t('.izakaya') %></h2>
+            <p><%= t('.izakaya_description') %></p>
+          </div>
         </div>
       <% end %>
       <%= link_to plans_path, class: 'card bg-indigo-400 shadow-xl' do %>
         <div class="card-body" style="background-image: url('<%= asset_path 'cheers.jpg' %>'); background-size: cover; background-position: center;" aria-label="呑み計画を立てる">
-          <h2 class="card-title"><%= t('.plan') %></h2>
-          <p><%= t('.plan_description') %></p>
+          <div class="bg-slate-950 opacity-70">
+            <h2 class="card-title"><%= t('.plan') %></h2>
+            <p><%= t('.plan_description') %></p>
+          </div>
         </div>
       <% end %>
     </div>
+    <%= render "shared/footer" %>
   </div>
 </div>
