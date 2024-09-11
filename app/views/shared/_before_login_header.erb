@@ -1,14 +1,13 @@
-<%# TailwindCSSを使用してヘッダーにハンバーガーメニュー %>
-<header class="bg-gray-800 fixed top-0 left-0 w-full z-10">
-  <div class="flex items-center justify-between h-16">
-    <div class="flex items-center">
-      <a href="/" class="text-white text-2xl font-bold ml-4 px-2"><%= t('header.title') %></a>
-      <%= link_to 'JP', url_for(locale: :ja), class: "text-white text-xs py-2 px-2" %> /
-      <%= link_to 'EN', url_for(locale: :en), class: "text-white text-xs py-2 px-2" %>
+<header class="fixed top-0 left-0 w-full z-10 text-white">
+  <div class="flex items-center justify-between">
+    <div class="flex items-center text-base md:text-2xl">
+      <a href="/" class="text-lg md:text-2xl font-bold ml-2 p-2"><%= t('header.title') %></a>
+      <%= link_to 'JP', url_for(locale: :ja), class: "text-xs py-2 px-2" %> /
+      <%= link_to 'EN', url_for(locale: :en), class: "text-xs py-2 px-2" %>
     </div>
     <div class="block">
       <%= link_to auth_at_provider_path(provider: :google), class: "flex items-center py-2 px-4" do %>
-        <%= image_tag 'web_dark_rd_na.svg', alt: 'Google Logo', class: 'w-6 h-6 mr-2' %>
+        <%= image_tag 'web_dark_rd_na.svg', alt: 'Google Logo', class: 'mr-2' %>
         <%= t('header.login') %>
       <% end %>
     </div>

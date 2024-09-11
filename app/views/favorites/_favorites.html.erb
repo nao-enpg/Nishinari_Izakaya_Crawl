@@ -1,4 +1,5 @@
-<div class="m-4 p-4 bg-gray-100 rounded-lg shadow-md">
-  <h3 class="text-lg font-semibold"><%= favorites.izakaya.name %></h3>
-  <%= link_to t('favorites.show'), izakaya_path(favorites.izakaya), class: 'bg-blue-500 hover:bg-blue-700 text-white py-1 px-4 rounded' %>
-</div>
+<%= link_to izakaya_path(favorites.izakaya) do %>
+  <div class="m-4 p-4 rounded-lg shadow-md" style="background-image: url('<%= favorites.izakaya.image %>'); background-size: cover; background-position: center;">
+    <h3 class="text-lg font-semibold text-white bg-slate-950 opacity-70"><%= favorites.izakaya.name %></h3>
+  </div>
+<% end %>

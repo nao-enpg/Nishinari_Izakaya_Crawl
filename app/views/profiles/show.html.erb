@@ -1,24 +1,24 @@
-<div class="max-w-2xl mx-auto mt-10 p-6 bg-white rounded-lg">
+<div class="max-w-2xl mx-auto mt-10 p-6 bg-white rounded-lg text-center text-slate-800">
   <%= turbo_frame_tag 'profile' do %>
     <%= render partial: 'profiles/profile', locals: { user: @user } %>
   <% end %>
   <turbo-frame id="edit_profile"></turbo-frame>
 </div>
 
-<div class="mt-6">
-  <h2 class="text-xl font-bold"><%= t('.favorite_izakaya') %></h2>
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+<div class="mt-6 p-2">
+  <h2 class="text-xl font-bold text-white"><%= t('.favorite_izakaya') %></h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
     <%= render partial: 'favorites/favorites', collection: @user.favorites %>
   </div>
 </div>
 
-<div class="mt-6">
-  <h2 class="text-xl font-bold"><%= t('.plan_list') %></h2>
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+<div class="mt-6 p-2">
+  <h2 class="text-xl font-bold text-white"><%= t('.plan_list') %></h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
     <%= render partial: 'plans/plan', collection: @user.plans %>
   </div>
 </div>
 
-<div class="text-center mt-4">
-  <%= link_to t('.back'), root_path, class: 'bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded' %>
+<div class="text-center mt-8">
+  <%= link_to t('.back'), root_path, class: 'bg-zinc-500 hover:bg-zinc-700 text-white py-2 px-4 rounded' %>
 </div>

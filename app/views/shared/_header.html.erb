@@ -1,11 +1,11 @@
-<header class="bg-gray-800 fixed top-0 left-0 w-full z-10">
-  <div class="flex items-center justify-between h-16">
-    <div class="flex items-center">
-      <a href="/" class="text-white text-2xl font-bold ml-4 px-2"><%= t('header.title') %></a>
-      <%= link_to 'JP', url_for(locale: :ja), class: "text-white text-xs py-2 px-2" %> /
-      <%= link_to 'EN', url_for(locale: :en), class: "text-white text-xs py-2 px-2" %>
+<header class="fixed top-0 left-0 w-full z-10 text-white">
+  <div class="flex items-center justify-between">
+    <div class="flex items-center text-base md:text-2xl">
+      <a href="/" class="text-lg md:text-2xl font-bold ml-2 p-2"><%= t('header.title') %></a>
+      <%= link_to 'JP', url_for(locale: :ja), class: "text-xs py-2 px-2" %> /
+      <%= link_to 'EN', url_for(locale: :en), class: "text-xs py-2 px-2" %>
     </div>
-    <div class="block ml-auto">
+    <div class="block mr-1">
       <%= link_to t('header.mypage'), profile_path %> /
       <%= link_to t('header.logout'), logout_path, data: { turbo_method: :delete } %>
     </div>

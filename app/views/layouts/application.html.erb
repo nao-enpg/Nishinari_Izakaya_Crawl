@@ -29,8 +29,9 @@
   <% else %>
     <%= render 'shared/before_login_header' %>
   <% end %>
+  <% if flash.any? %>
     <%= render 'shared/flash_message' %>
+  <% end %>
     <%= yield %>
-    <%= render "shared/footer" %>
   </body>
 </html>
