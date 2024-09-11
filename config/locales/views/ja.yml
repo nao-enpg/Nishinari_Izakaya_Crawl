@@ -38,6 +38,7 @@ ja:
       show: "見る"
       edit: "編集"
       delete: "削除"
+      confirm_delete: "削除しますか？"
     show:
       title: "旅程表詳細"
       izakaya_list: "居酒屋リスト"
