@@ -144,7 +144,7 @@
           <%= form_with url: izakaya_plans_path, method: :post, local: true do |form| %>
             <%= form.hidden_field 'izakaya_plan[izakaya_id]', value: izakaya.id %>
             <%= form.collection_select 'izakaya_plan[plan_id]', current_user.plans, :id, :name, prompt: t('.select_plan') %>
-            <%= form.submit t('.add_izakaya'), class: 'btn btn-primary' %>
+            <%= form.submit t('.add_izakaya'), class: 'btn bg-zinc-500 hover:bg-zinc-700' %>
           <% end %>
         <% end %>
         <% if current_user %>
