@@ -18,7 +18,7 @@
 <% end %>
 <div
   id="izakayas"
-  class="grid grid-cols-1 gap-4 max-w-md mx-auto"
+  class="grid grid-cols-1 gap-4 md:max-w-lg max-w-xs mx-auto"
   <% if current_user&.own?(@plan) %>
     data-controller="sortable"
     data-sortable-handle-selector-value=".sortable-handle"
@@ -27,7 +27,7 @@
   <% @plan.izakaya_plans.rank(:row_order).each do |izakaya_plan| %>
     <div
       id="<%= dom_id(izakaya_plan) %>"
-      class="card bg-white shadow-md rounded-lg p-4 flex flex-col justify-between items-center md:max-h-72 max-h-44"
+      class="card bg-white shadow-md rounded-lg p-4 flex flex-col justify-center items-center md:max-h-72 max-h-44"
       style="background-image: url('<%= izakaya_plan.izakaya.image %>'); background-size: cover; background-position: center;"
       <% if current_user&.own?(@plan) %>
         data-sortable-url="<%= reorder_izakaya_plan_path(izakaya_plan) %>"
