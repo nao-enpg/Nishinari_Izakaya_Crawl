@@ -49,6 +49,7 @@ en:
       public: "Public Status"
       public_true: "Public"
       public_false: "Private"
+      description: "You can reorder the list in the order you want by drag and drop"
       x_share: "Post on X"
       x_message: "Planned!"
     new:

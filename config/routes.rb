@@ -21,7 +21,9 @@ Rails.application.routes.draw do
   end
   resources :favorites, only: %i[create destroy]
 
-  resources :izakaya_plans, only: [:create, :destroy]
+  resources :izakaya_plans, only: [:create, :destroy] do
+    patch "reorder", on: :member
+  end
   resources :plans
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

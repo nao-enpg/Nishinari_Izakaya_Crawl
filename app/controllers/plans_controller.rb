@@ -11,7 +11,7 @@ class PlansController < ApplicationController
     unless current_user&.own?(@plan) || @plan.public?
       redirect_to plans_path, alert: t('.plans.public_false')
     end
-    @izakayas = @plan.izakayas
+    @izakayas = @plan.izakayas.joins(:izakaya_plans).merge(IzakayaPlan.rank(:row_order))
     @izakaya_plan = IzakayaPlan.find_by(plan: @plan)
   end
 

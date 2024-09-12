@@ -13,15 +13,34 @@
 <% end %>
 
 <h2 class="text-2xl font-semibold mb-4 pl-4 text-white"><%= t('.izakaya_list') %></h2>
-<div class="grid grid-cols-1 gap-4 max-w-md mx-auto">
-  <% @izakayas.each do |izakaya| %>
-    <div class="card bg-white shadow-md rounded-lg p-4 flex justify-between items-center" style="background-image: url('<%= izakaya.image %>'); background-size: cover; background-position: center;">
-      <div class="card-body">
-        <h3 class="card-title text-xl font-bold text-white bg-slate-950 opacity-70 p-2"><%= izakaya.name %></h3>
-        <%= link_to t('.show'), izakaya_path(izakaya), class: 'btn bg-zinc-500 hover:bg-zinc-700 text-white' %>
-        <% if current_user&.own?(@plan) %>
-          <%= link_to t('.delete'), izakaya_plan_path(@izakaya_plan), data: { turbo_method: :delete, turbo_confirm: t('.confirm_delete') }, class: 'btn bg-zinc-500 hover:bg-zinc-700 text-white' %>
-        <% end %>
+<% if current_user&.own?(@plan) %>
+  <p class="bg-zinc-500 rounded-full inline-block text-xs ml-4 mb-4 p-3 text-white"><%= t('.description')%></p>
+<% end %>
+<div
+  id="izakayas"
+  class="grid grid-cols-1 gap-4 max-w-md mx-auto"
+  <% if current_user&.own?(@plan) %>
+    data-controller="sortable"
+    data-sortable-handle-selector-value=".sortable-handle"
+  <% end %>
+>
+  <% @plan.izakaya_plans.rank(:row_order).each do |izakaya_plan| %>
+    <div
+      id="<%= dom_id(izakaya_plan) %>"
+      class="card bg-white shadow-md rounded-lg p-4 flex flex-col justify-between items-center md:max-h-72 max-h-44"
+      style="background-image: url('<%= izakaya_plan.izakaya.image %>'); background-size: cover; background-position: center;"
+      <% if current_user&.own?(@plan) %>
+        data-sortable-url="<%= reorder_izakaya_plan_path(izakaya_plan) %>"
+      <% end %>
+    >
+      <div class="card-body flex flex-col justify-between w-full items-center">
+        <h3 class="card-title text-xl font-bold text-white bg-slate-950 opacity-70 p-2"><%= izakaya_plan.izakaya.name %></h3>
+        <div class="flex space-x-2 mt-2">
+          <%= link_to t('.show'), izakaya_path(izakaya_plan.izakaya), class: 'btn bg-zinc-500 hover:bg-zinc-700 text-white' %>
+          <% if current_user&.own?(@plan) %>
+            <%= link_to t('.delete'), izakaya_plan_path(izakaya_plan), data: { turbo_method: :delete, turbo_confirm: t('.confirm_delete') }, class: 'btn bg-zinc-500 hover:bg-zinc-700 text-white' %>
+          <% end %>
+        </div>
       </div>
     </div>
   <% end %>
