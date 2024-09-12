@@ -1,11 +1,5 @@
 module ApplicationHelper
-  def show_meta_tags
-    assign_meta_tags if display_meta_tags.blank?
-    display_meta_tags
-  end
-
   def default_meta_tags
-    def default_meta_tags
     {
       site: '西成泥酔旅行',
       title: '西成泥酔旅行',
@@ -28,6 +22,5 @@ module ApplicationHelper
         image: image_url('ogp.png')
       }
     }
-    end
   end
 end

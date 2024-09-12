@@ -6,6 +6,12 @@
   <%= @plan.public ? t('.public_true') : t('.public_false') %>
 </p>
 
+<% if @plan.public %>
+  <div class="mb-4 pl-4">
+    <%= link_to t('.x_share'), "https://x.com/intent/tweet?text=#{CGI.escape("#{@plan.name} #{t('.x_message')} #{plan_url(@plan)}")}", class: 'btn bg-zinc-500 hover:bg-zinc-700 text-white', target: '_blank', rel: 'noopener noreferrer' %>
+  </div>
+<% end %>
+
 <h2 class="text-2xl font-semibold mb-4 pl-4 text-white"><%= t('.izakaya_list') %></h2>
 <div class="grid grid-cols-1 gap-4 max-w-md mx-auto">
   <% @izakayas.each do |izakaya| %>
