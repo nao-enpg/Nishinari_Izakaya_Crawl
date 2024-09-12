@@ -3,8 +3,8 @@
     <nav class="lg:flex items-center mb-4">
       <% footer_links = [
         { path: 'https://x.com/nao_enpg', text: t('footer.contact') },
-        { path: '/', text: t('footer.terms_of_use') },
-        { path: '/', text: t('footer.privacy_policy') }
+        { path: terms_path, text: t('footer.terms_of_use') },
+        { path: privacy_policy_path, text: t('footer.privacy_policy') }
       ] %>
       <% footer_links.each do |link| %>
         <a href="<%= link[:path] %>" class="text-xs font-bold ml-2"><%= link[:text] %></a>
