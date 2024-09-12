@@ -8,7 +8,7 @@ ja:
         name: "店名"
       plan:
         name: "旅程タイトル"
-        public: "公開状態"
+        public: "他の人に公開する"
   oauth:
     login_success: "Googleアカウントでログインしました"
     login_failure: "Googleアカウントでのログインに失敗しました"

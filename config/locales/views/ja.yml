@@ -47,7 +47,7 @@ ja:
       back: "戻る"
       delete: "削除"
       confirm_delete: "削除しますか？"
-      public: "公開状態"
+      public: "他の人に公開する"
       public_true: "公開"
       public_false: "非公開"
       x_share: "Xに投稿"
