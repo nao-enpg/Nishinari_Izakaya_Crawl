@@ -50,6 +50,7 @@ ja:
       public: "他の人に公開する"
       public_true: "公開"
       public_false: "非公開"
+      description: "ドラックアンドドロップで行きたい順に並び替えできます"
       x_share: "Xに投稿"
       x_message: "を企画しました！"
     new:
