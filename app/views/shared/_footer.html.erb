@@ -10,6 +10,11 @@
         <a href="<%= link[:path] %>" class="text-xs font-bold ml-2"><%= link[:text] %></a>
       <% end %>
     </nav>
-    <span class="text-xs font-bold mr-2 mb-4">© <%= t('footer.title') %></span>
+    <div class="flex items-center">
+      <a href="https://x.com/intent/tweet?text=<%= t('layouts.application.title') %>%20%0ahttps://nishinari-izakaya.net" class="mr-2 mb-4" target="_blank" rel="noopener noreferrer">
+        <img src="<%= asset_path('x-logo.svg') %>" alt="X Logo" />
+      </a>
+      <span class="text-xs font-bold mr-2 mb-4">© <a href="https://x.com/nao_enpg" class="text-white"><%= t('footer.title') %></a></span>
+    </div>
   </div>
 </footer>

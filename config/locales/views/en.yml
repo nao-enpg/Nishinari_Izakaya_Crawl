@@ -49,6 +49,8 @@ en:
       public: "Public Status"
       public_true: "Public"
       public_false: "Private"
+      x_share: "Post on X"
+      x_message: "Planned!"
     new:
       submit: "Create"
       back: "Back"
