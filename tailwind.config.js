@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        ud: ['Noto Sans JP', 'Open Sans']
+        ud: ['BIZ UDPGothic', 'Open Sans']
       }
     }
   },
