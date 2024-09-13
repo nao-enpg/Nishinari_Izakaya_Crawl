@@ -9,6 +9,11 @@ en:
       izakaya_description: "You can search for the izakaya you want to go to"
       plan: "Make a Drinking Plan"
       plan_description: "You can create the best bar hopping plan"
+    contact:
+      contact_form: "Contact form"
+      e-mail: "E-mail address"
+      msg: "Content of inquiry"
+      submit: "Send"
   izakayas:
     index:
       title: "Izakaya List"
@@ -75,7 +80,7 @@ en:
     logout: "Logout"
     mypage: "My Page"
   footer:
-    title: "Nishinari Izakaya Crawl"
+    title: "©Nishinari Izakaya Crawl"
     contact: "Contact Us"
     terms_of_use: "Terms of Use"
     privacy_policy: "Privacy Policy"

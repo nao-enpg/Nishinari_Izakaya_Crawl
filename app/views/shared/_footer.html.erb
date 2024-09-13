@@ -2,7 +2,7 @@
   <div class="flex items-center justify-between">
     <nav class="lg:flex items-center mb-4">
       <% footer_links = [
-        { path: 'https://x.com/nao_enpg', text: t('footer.contact') },
+        { path: contact_path, text: t('footer.contact') },
         { path: terms_path, text: t('footer.terms_of_use') },
         { path: privacy_policy_path, text: t('footer.privacy_policy') }
       ] %>
@@ -14,7 +14,7 @@
       <a href="https://x.com/intent/tweet?text=<%= t('layouts.application.title') %>%20%0ahttps://nishinari-izakaya.net" class="mr-2 mb-4" target="_blank" rel="noopener noreferrer">
         <img src="<%= asset_path('x-logo.svg') %>" alt="X Logo" />
       </a>
-      <span class="text-xs font-bold mr-2 mb-4">© <a href="https://x.com/nao_enpg" class="text-white"><%= t('footer.title') %></a></span>
+      <span class="text-xs font-bold mr-2 mb-4"><%= t('footer.title') %></span>
     </div>
   </div>
 </footer>
