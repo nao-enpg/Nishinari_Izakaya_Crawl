@@ -1,6 +1,8 @@
 # 西成泥酔旅行（Nishinari Izakaya Crawl）
 <img src="app/assets/images/eyecatch.gif" width="500">
 
+サービスURL: https://nishinari-izakaya.net
+
 ## サービス概要
 
 西成泥酔旅行（英題：Nishinari Izakaya Crawl）は、大阪市西成区で居酒屋巡りをするためのサービスです。
