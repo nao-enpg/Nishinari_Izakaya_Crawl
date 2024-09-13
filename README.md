@@ -1,4 +1,5 @@
 # 西成泥酔旅行（Nishinari Izakaya Crawl）
+<img src="app/assets/images/eyecatch.gif" width="500">
 
 ## サービス概要
 
@@ -47,9 +48,7 @@
 
 さらに、外国人観光客の利用を想定し、言語切り替え機能（英語）を実装します。
 
-## 機能候補
-
-### MVP リリース時
+## 機能一覧
 
 - ユーザー機能（Google アカウントによる認証）
 - マップ検索（Google Maps API）
@@ -59,16 +58,13 @@
 - お気に入りリスト
 - 旅程表作成
 
-### 本リリース時
-
 - レスポンシブ対応
 - 英語への切り替え対応
 - 現在地からのレコメンド
 - 現在地から次のお店までのルート検索
 - YouTube 動画レコメンド（店舗名で動画を検索）
-- 旅程表の共同編集
 
-## 機能の実装方針予定
+## 技術スタック
 
 - フロントエンド: Tailwind CSS (v3.4.3), DaisyUI (v4.11.1), Hotwire
 - バックエンド: Ruby (v3.2.3), Ruby on Rails (v7.0.4)
@@ -97,7 +93,9 @@ erDiagram
     bigint id PK
     string uid "UID"
     string name "ユーザー名"
-    string avatar "アバター"
+    string email
+    string crypted_password
+    string salt
     timestamp created_at
     timestamp updated_at
   }
@@ -105,11 +103,14 @@ erDiagram
   izakayas {
     bigint id PK
     string name "居酒屋名"
-    float latitude "緯度"
-    float longitude "経度"
-    string image "画像"
+    string formatted_address
+    float lat "緯度"
+    float lng "経度"
+    string photo_reference "画像リファレンス"
+    string photo_reference "画像"
     string opening_hours "営業時間"
     string description "説明"
+    string url "Google Places ID"
     timestamp created_at
     timestamp updated_at
   }

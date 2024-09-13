@@ -1,0 +1,18 @@
+<div class="h-screen flex flex-col items-center justify-center bg-center bg-cover text-sky-50" style="background-image: url('<%= asset_path 'top_small.jpg' %>')">
+  <div class="bg-white bg-opacity-50 rounded-lg shadow-lg p-8 max-w-md w-full">
+    <h2 class="text-2xl font-bold text-center mb-6 text-gray-900"><%= t('.contact_form') %></h2>
+    <%= form_with url: "https://docs.google.com/forms/u/0/d/e/1FAIpQLSd8a11-VnHmqE0l8xtahEgiXjxIQtHs3B3UoiC3n4ogBLdUmQ/formResponse", method: :post, local: true do |form| %>
+      <div class="mb-4">
+        <%= label_tag :email, t('.e-mail'), class: "block text-gray-700" %>
+        <%= text_field_tag "entry.1932653243", nil, class: "mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2", placeholder: "example@mail.co.jp", required: true %>
+      </div>
+      <div class="mb-4">
+        <%= label_tag :msg, t('.msg'), class: "block text-gray-700" %>
+        <%= text_area_tag "entry.1841024108", nil, class: "mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 h-32", required: true %>
+      </div>
+      <div>
+        <%= submit_tag t('.submit'), class: "w-full bg-zinc-500 hover:bg-zinc-700 text-white font-bold py-2 px-4 rounded" %>
+      </div>
+    <% end %>
+  </div>
+</div>

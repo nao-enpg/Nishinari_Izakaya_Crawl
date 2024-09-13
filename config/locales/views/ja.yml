@@ -9,6 +9,11 @@ ja:
       izakaya_description: "行きたい居酒屋を検索できます"
       plan: "呑み計画を立てる"
       plan_description: "最高の飲み歩き計画を作れます"
+    contact:
+      contact_form: "お問い合わせ"
+      e-mail: "メールアドレス"
+      msg: "お問い合わせ内容"
+      submit: "送信"
   izakayas:
     index:
       title: "居酒屋一覧"
@@ -76,7 +81,7 @@ ja:
     logout: "ログアウト"
     mypage: "マイページ"
   footer:
-    title: "西成泥酔旅行"
+    title: "©西成泥酔旅行"
     contact: "お問い合わせ"
     terms_of_use: "利用規約"
     privacy_policy: "プライバシーポリシー"
