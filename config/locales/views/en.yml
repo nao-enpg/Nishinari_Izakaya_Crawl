@@ -56,7 +56,7 @@ en:
       public_false: "Private"
       description: "You can reorder the list in the order you want by drag and drop"
       x_share: "Post on X"
-      x_message: "Planned!"
+      x_message: "Planned! #Nishinari_Izakaya_Crawl"
     new:
       submit: "Create"
       back: "Back"

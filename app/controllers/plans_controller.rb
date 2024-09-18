@@ -13,6 +13,14 @@ class PlansController < ApplicationController
     end
     @izakayas = @plan.izakayas.joins(:izakaya_plans).merge(IzakayaPlan.rank(:row_order))
     @izakaya_plan = IzakayaPlan.find_by(plan: @plan)
+
+    set_meta_tags({
+      title: '西成泥酔旅行',
+      og: {
+        title: '西成泥酔旅行',
+        url: request.original_url,
+      }
+    })
   end
 
   def new
