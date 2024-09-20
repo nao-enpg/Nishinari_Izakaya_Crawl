@@ -1,7 +1,7 @@
 <%= turbo_frame_tag 'edit_profile' do %>
   <%= form_with(model: @user, url: profile_path, method: :patch, data: { turbo_frame: 'edit_profile' }) do |f| %>
-    <div class="mb-4 bg-white">
-      <%= f.text_field :name, class: "appearance-none border rounded w-full mt-4 py-2 px-3 leading-tight" %>
+    <div class="mb-4">
+      <%= f.text_field :name, class: "appearance-none border rounded w-full mt-4 py-2 px-3 leading-tight text-white" %>
     </div>
     <div class="flex items-center justify-between">
       <%= f.submit t('.submit'), class: "bg-zinc-500 hover:bg-zinc-700 text-white py-2 px-4 rounded" %>

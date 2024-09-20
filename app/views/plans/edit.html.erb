@@ -2,7 +2,7 @@
   <%= form_with(model: @plan, local: true, class: 'max-w-lg mx-auto p-4 bg-white shadow-md rounded-lg') do |f| %>
     <div class="mb-4">
       <%= f.label :name, class: 'block text-gray-700 text-sm font-bold mb-2' %>
-      <%= f.text_field :name, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' %>
+      <%= f.text_field :name, class: 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline text-white' %>
     </div>
 
     <div class="mb-4">
@@ -11,10 +11,10 @@
     </div>
 
     <div class="flex items-center justify-between">
-      <%= f.submit t('.submit'), class: 'btn bg-zinc-500 hover:bg-zinc-700' %>
+      <%= f.submit t('.submit'), class: 'btn bg-zinc-500 hover:bg-zinc-700 text-white' %>
     </div>
   <% end %>
 </div>
 <div class="mt-4 ml-2">
-  <%= link_to t('.back'), plans_path, class: 'btn bg-zinc-500 hover:bg-zinc-700' %>
+  <%= link_to t('.back'), plans_path, class: 'btn bg-zinc-500 hover:bg-zinc-700 text-white' %>
 </div>
