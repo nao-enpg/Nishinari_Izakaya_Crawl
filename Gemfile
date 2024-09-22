@@ -54,6 +54,7 @@ group :development, :test do
   gem 'rubocop'
   gem 'rubocop-checkstyle_formatter'
   gem 'rubocop-rails'
+  gem "rubocop-rails-omakase", require: false, group: [ :development ]
 
   gem 'better_errors'
   gem 'binding_of_caller'
