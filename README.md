@@ -1,5 +1,5 @@
 # 西成泥酔旅行（Nishinari Izakaya Crawl）
-<img src="app/assets/images/eyecatch.gif" width="600">
+<img src="app/assets/images/eyecatch.gif">
 
 サービスURL: https://nishinari-izakaya.net
 
@@ -29,49 +29,44 @@
 
 | 居酒屋検索 |
 | :---: |
-| [![izakaya_search](https://i.gyazo.com/49407920ec5938cd21e2fe028ba1de9d.png)](izakaya_search) |
+| <img src="https://i.gyazo.com/49407920ec5938cd21e2fe028ba1de9d.png" alt="izakaya_search" width="450" /> |
 
-| <p align="left">ログイン不要で、DBに登録されている珠玉の居酒屋を検索できます。主に居酒屋に紐づくタグで絞り込みを行い、ユーザーのニーズに合った居酒屋を探していただくことを想定しています。タグは複数指定可能です。</p> |
+<p align="left">ログイン不要で、DBに登録されている珠玉の居酒屋を検索できます。主に居酒屋に紐づくタグで絞り込みを行い、ユーザーのニーズに合った居酒屋を探していただくことを想定しています。タグは複数指定可能です。</p>
 <br>
 
 | マップ検索（Google Maps API） |
 | :---: |
-| [![map search](https://i.gyazo.com/55dbb8eb49b785ba9fa4593aad2188fd.png)](map_search) |
+| <img src="https://i.gyazo.com/55dbb8eb49b785ba9fa4593aad2188fd.png" alt="map_search" width="450" /> |
 
-| <p align="left">Google Mapから居酒屋を探すことも可能です。また、ユーザーの現在地から近い居酒屋を10件絞り込みする機能を実装しています。
-</p> |
+<p align="left">Google Mapから居酒屋を探すことも可能です。また、ユーザーの現在地から近い居酒屋を10件絞り込みする機能を実装しています。</p>
 <br>
 
 | 居酒屋詳細情報 |
 | :---: |
-| [![Izakaya show](https://i.gyazo.com/1f5a7d4577bd237415a851a787276e20.png)](izakaya_show) |
+| <img src="https://i.gyazo.com/1f5a7d4577bd237415a851a787276e20.png" alt="izakaya_show" width="450" /> |
 
-| <p align="left">詳細画面では、店名を基にしたYouTube検索に加え、Google Mapへの遷移及び現在地からの行程検索のリンクを配置しています。ユーザーが気になった居酒屋に対してより多くの情報を得ていただけます。
-</p> |
+<p align="left">詳細画面では、店名を基にしたYouTube検索に加え、Google Mapへの遷移及び現在地からの行程検索のリンクを配置しています。ユーザーが気になった居酒屋に対してより多くの情報を得ていただけます。</p>
 <br>
 
-| 居酒屋詳細情報 |
+| 旅程表の作成 |
 | :---: |
-| [![Plan_show](https://i.gyazo.com/cd306f09fe11c94bba2fd640c370b2b0.jpg)](plan_show)|
+| <img src="https://i.gyazo.com/cd306f09fe11c94bba2fd640c370b2b0.jpg" alt="plan_show" width="450" /> |
 
-| <p align="left">ログインユーザーは飲み歩きの旅程表を作成し、行きたい居酒屋をリストとして登録することができます。登録した居酒屋はドラック&ドロップで行きたい順に並べ替えができます。また、他のユーザーに対して旅程表の公開・非公開を選択でき、公開している旅程表はXでシェアすることができます。
-</p> |
+<p align="left">ログインユーザーは飲み歩きの旅程表を作成し、行きたい居酒屋をリストとして登録することができます。登録した居酒屋はドラック&ドロップで行きたい順に並べ替えができます。また、他のユーザーに対して旅程表の公開・非公開を選択でき、公開している旅程表はXでシェアすることができます。</p>
 <br>
 
 | マイページ |
 | :---: |
-| [![mypage](https://i.gyazo.com/bccd3546a02cb1de6c6d111a385c3cca.png)](mypage)|
+| <img src="https://i.gyazo.com/bccd3546a02cb1de6c6d111a385c3cca.png" alt="mypage" width="450" /> |
 
-| <p align="left">マイページではユーザーがお気に入り登録した居酒屋と作成した旅程表を確認することができます。
-</p> |
+<p align="left">マイページではユーザーがお気に入り登録した居酒屋と作成した旅程表を確認することができます。</p>
 <br>
 
 | 英語への切り替え |
 | :---: |
-| [![Englishview](https://i.gyazo.com/56c0920c3e286a35e436445eb3848ed2.jpg)](English_view) |
+| <img src="https://i.gyazo.com/56c0920c3e286a35e436445eb3848ed2.jpg" alt="English_view" width="450" /> |
 
-| <p align="left">外国人観光客にも使っていただけるよう英語ビューに対応しています。
-</p> |
+<p align="left">外国人観光客にも使っていただけるよう英語ビューに対応しています。</p>
 <br>
 
 ## 技術スタック
