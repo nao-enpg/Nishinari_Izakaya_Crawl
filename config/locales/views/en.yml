@@ -4,11 +4,11 @@ en:
       title: "Nishinari Izakaya Crawl"
   static_pages:
     top:
-      description: "Providing the best izakaya information for you to bar hop in Osaka Nishinari"
+      description: "Providing the best izakaya information for you to izakaya crawl in Osaka Nishinari"
       izakaya: "Go Drinking"
       izakaya_description: "You can search for the izakaya you want to go to"
       plan: "Make a Drinking Plan"
-      plan_description: "You can create the best bar hopping plan"
+      plan_description: "You can create the best izakaya crawl plan"
     contact:
       contact_form: "Contact form"
       e-mail: "E-mail address"
