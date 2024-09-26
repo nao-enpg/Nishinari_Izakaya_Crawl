@@ -9,6 +9,7 @@ ja:
       plan:
         name: "旅程タイトル"
         public: "他の人に公開する"
+        description: "旅程の説明"
   oauth:
     login_success: "Googleアカウントでログインしました"
     login_failure: "Googleアカウントでのログインに失敗しました"
