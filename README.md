@@ -139,6 +139,7 @@ erDiagram
     bigint id PK
     references user FK
     string name "旅程表名"
+    string description "説明"
     boolean public
     timestamp created_at
     timestamp updated_at
