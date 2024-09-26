@@ -60,6 +60,6 @@ class PlansController < ApplicationController
   end
 
   def plan_params
-    params.require(:plan).permit(:name, :public)
+    params.require(:plan).permit(:name, :public, :description)
   end
 end

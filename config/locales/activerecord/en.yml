@@ -9,6 +9,7 @@ en:
       plan:
         name: "Plan Title"
         public: "Public Status"
+        description: "Plan Description"
   oauth:
     login_success: "Logged in with Google account"
     login_failure: "Failed to log in with Google account"
