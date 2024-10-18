@@ -75,7 +75,7 @@
 - バックエンド: Ruby (v3.2.3), Ruby on Rails (v7.0.4)
 - データベース: PostgreSQL (v16.2)
 - 認証: Google OAuth
-- インフラ: Docker (v20.10.8), Koyeb（Web）,Supabase（DB）
+- インフラ: Docker (v20.10.8), Koyeb
 - API: Google Maps API
 
 ## 画面遷移図
